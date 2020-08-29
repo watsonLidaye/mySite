@@ -1,0 +1,166 @@
+.input_plate{
+    width: 100%;
+    margin-bottom: 20px;
+    .input_unit{
+        width: 70%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        
+        .input_title{
+            width:100px;
+            font-size: 14px;
+        }
+        .input{
+            width: 80%;
+            height: 32px;
+            box-sizing: border-box;
+            line-height: 32px;
+            font-size: 14px;
+            border-radius: 4px;
+            border:1px solid rgb(220, 223, 230);
+            padding: 4px;
+        }
+        .input:focus{
+            border-color: #1890ff;
+            outline: 0;
+        }
+        .input_select{
+            width: 100%;
+            height: 10px;
+            border: 1px solid #000;
+        }
+    }
+    .el-dialog__footer{
+        text-align: center !important;
+    }
+}
+.w90{
+    width: 90px;
+}
+.contanier{
+    padding: 20px;
+    padding-top: 0;
+    font-size: 14px;
+    .el-button{
+        font-size: 14px  !important;
+    }
+    .select{
+        width: 100%;
+        margin-bottom: 20px;
+        background: rgb(255, 255, 255) ;
+        padding: 10px;
+        padding-top: 20px;
+        padding-left: 0;
+            padding-right: 0;
+        box-sizing: border-box;
+        .input_unit{
+            width: 70%;
+            .input_title{
+                text-align: right;
+                width: 80px;
+                font-size: 14px;
+            }
+            .input{
+                width: 160px;
+                height: 32px;
+                border-radius: 4px;
+                box-sizing: border-box;
+                line-height: 28px;
+                font-size: 14px;
+                border:1px solid rgb(220, 223, 230);
+                padding: 4px;
+            }
+            .input:focus{
+                border-color: #1890ff;
+                outline: 0;
+            }
+        }
+        .search{
+            padding: 5px 10px;
+            line-height: 20px;
+            background: #1890ff;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            border: 0;
+            min-width: 70px;            
+        }
+        .search:hover{
+            cursor: pointer;
+            box-shadow: 0px 0px 3px #1890ff;
+        }
+    }
+    .Opheader{
+        padding-top: 30px;
+        padding-bottom: 20px;
+        button{
+            margin-right: 20px;
+        }
+    }
+    table{
+        width: 100%;
+        border: 1px solid #dddddd;
+        border-collapse: collapse;
+        user-select: text;
+        margin: 0 auto;
+        font-size: 14px;
+        thead{
+            border: 1px solid #dddddd;
+            tr{
+                padding:16px;
+                background: #F7F9FC !important;
+                vertical-align: middle !important;
+                text-align: center;
+                th{
+                    padding:16px;
+                    font-size: 14px;
+                }
+            }
+            
+        }
+       
+        tbody{
+            tr{
+                border-bottom:1px solid #ddd;
+               
+                background: #fff !important;
+                vertical-align: middle !important;
+                text-align: center;
+                td{
+                    padding:16px;
+                    font-size: 14px;
+                }
+                .operation{
+                    color: #0098E1;
+                    span{
+                        padding: 0 5px 0 0;
+                    }
+                    span:hover{
+                        cursor: pointer;
+                    }
+                    .line{
+                        border-right: 1px solid #000;
+                    }
+                }
+            }
+        }
+    }
+    .white_border{
+        border-color: #fff;
+        .thead_splace{
+            border-color:#fff;
+            .splace_line{
+                color:#fff;
+                background: #fff !important;
+                border-color: #fff;
+                tr{
+                    border-left: 1px solid #ddd;
+                }
+            }
+        }
+    }
+}
+
+.L36{
+    line-height: 36px;
+}

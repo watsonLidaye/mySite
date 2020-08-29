@@ -1,0 +1,119 @@
+{
+  "name": "admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.6.3",
+    "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.19.0",
+    "compression-webpack-plugin": "^4.0.0",
+    "core-js": "^3.6.5",
+    "echarts": "^4.8.0",
+    "express": "^4.17.1",
+    "less": "^3.11.3",
+    "less-loader": "5.0.0",
+    "locker": "^0.1.0",
+    "lockr": "^0.8.5",
+    "moment": "^2.27.0",
+    "mysql": "^2.18.1",
+    "nprogress": "^0.2.0",
+    "ts-import-plugin": "^1.6.6",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "^4.4.0",
+    "@vue/cli-plugin-eslint": "^4.4.0",
+    "@vue/cli-plugin-typescript": "^4.4.0",
+    "@vue/cli-service": "^4.4.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended",
+      "@vue/typescript/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "quotes": [
+        1,
+        "single"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "@typescript-eslint/no-explicit-any": 0,
+      "eqeqeq": 0,
+      "no-unused-vars": 0,
+      "space-before-function-paren": 0,
+      "prefer-const": 0,
+      "no-undef": 0,
+      "camelcase": 0,
+      "indent": [
+        0,
+        4
+      ],
+      "no-tabs": 0,
+      "eol-last": 0,
+      "no-cond-assign": 0,
+      "space-before-blocks": 0,
+      "no-constant-condition": 0,
+      "comma-dangle": 0,
+      "no-multiple-empty-lines": [
+        1,
+        {
+          "max": 2
+        }
+      ],
+      "no-trailing-spaces": 0,
+      "spaced-comment": 0,
+      "key-spacing": [
+        0,
+        {
+          "beforeColon": false,
+          "afterColon": true
+        }
+      ],
+      "space-infix-ops": 0,
+      "comma-spacing": 0,
+      "require-v-for-key": 0,
+      "no-side-effects-in-computed-properties": 0,
+      "object-curly-even-spacing": 0,
+      "no-mixed-spaces-and-tabs": 0,
+      "eslint-plugin-vue": 0,
+      "no-multi-spaces": 0,
+      "func-call-spacing": 0
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
