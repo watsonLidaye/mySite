@@ -5,6 +5,7 @@
     <input type="text" v-model="name" style="border:1px solid #eee" />
     <input type="text" v-model="age" style="border:1px solid #eee" />
     </div>
+    <!-- 修改了文件 -->
     <div @click="addUser">提交</div>
   </div>
 </template>
