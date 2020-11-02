@@ -1,13 +1,13 @@
 <template>
   <div class="login">
     this is indexPage
-    <div>
+    <!-- <div>
     <input type="text" v-model="name" style="border:1px solid #eee" />
     <input type="text" v-model="age" style="border:1px solid #eee" />
-    </div>
+    </div> -->
     <!-- 修改了文件 -->
     <!-- 再一次尝试修改文件 -->
-    <div @click="addUser">提交</div>
+    <!-- <div @click="addUser">提交</div> -->
   </div>
 </template>
 <script lang="ts">

@@ -9,6 +9,24 @@ const routes: Array<RouteConfig> = [
     name: 'login',
     component: (resolve: any) => require(['../views/login/login.vue'], resolve),
   },
+  {
+    path: '/pc',
+    name: 'pc',
+    redirect:'/pc/index',
+    component: (resolve: any) => require(['../views/pc/pc.vue'], resolve),
+    children:[
+      {
+        path: '/pc/index',
+        name: 'pc',
+        component: (resolve: any) => require(['../views/pc/index/index.vue'], resolve),
+      }
+    ]
+  },
+  {
+    path: '/moblie',
+    name: 'moblie',
+    component: (resolve: any) => require(['../views/moblie/moblie.vue'], resolve),
+  },
 ]
 
 const router = new VueRouter({

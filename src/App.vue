@@ -13,6 +13,14 @@
       return {
 
       }
+    },
+    mounted(){
+      if(document.body.clientWidth>750){
+        this.$router.replace('/pc')
+      }else{
+        this.$router.replace('/moblie')
+      }
+      console.log(document.body.clientWidth)
     }
   }
 </script>
