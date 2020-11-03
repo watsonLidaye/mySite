@@ -31,7 +31,7 @@
           <div class="photo">
                <div class="title">瞎拍</div>
                <div class="photo_list" >
-                   <div class="photo_item" v-for="(item,index) in list">
+                   <div class="photo_item" v-for="(item,index) in list" :key="index">
                        <div class="photo_img"></div>
                    </div>
                </div>
