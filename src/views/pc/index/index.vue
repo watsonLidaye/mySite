@@ -29,7 +29,7 @@
     你在网络所发表的言论要么是关系圈中的好好先生，要么是各大平台极端的宣泄，可谓一点意思也没有，本站想以一种文字条目的方式，记录本人的兴趣方向积累。
           </div>
           <div class="photo">
-               <div class="title">瞎拍</div>
+               <div class="title">最近瞎拍</div>
                <div class="photo_list" >
                    <div class="photo_item" v-for="(item,index) in list" :key="index">
                        <div class="photo_img"></div>
@@ -55,6 +55,13 @@ export default {
     return {  
         list:[1,1,1,1,1,1]
     };
+  },
+  mounted(){
+      window.$Ajax.get('/api/image/getImage').then(res=>{
+        console.log(res)
+      }).catch(res=>{
+          console.log(res)
+      })
   },
   methods: {
   }
