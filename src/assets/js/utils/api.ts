@@ -14,10 +14,15 @@ const api = Object.assign(daily, admin, order, {})
 const urls = (function () {
   let urls = ''
   if (location.href.indexOf('test') != -1 || location.href.indexOf('localhost') != -1 || location.href.indexOf('127.0.0.1') != -1) {
-    urls = 'http://127.0.0.1:8092/api/social/'
+    urls = 'http://127.0.0.1:3000/'
   } else {
-    urls = 'http://api.clal666.com/'
+    urls = 'http://www.ergouzi.com.cn:3000/'
   }
+  if (process.env.NODE_ENV === "'dev'"){
+    urls = 'api'
+} else {
+  urls = ''
+}
   return urls
 })()
 

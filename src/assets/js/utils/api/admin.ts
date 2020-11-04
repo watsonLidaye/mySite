@@ -1,6 +1,6 @@
 export default {
-  adminAuthenticate : {
-      url:'authenticate',
-      methods:'POST'
+  getImage : {
+      url:'api/image/getImage',
+      methods:'GET'
   }
 }

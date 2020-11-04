@@ -94,9 +94,9 @@ module.exports = {
         // 目标 API 地址
       target: 'http://127.0.0.1:3000/api/',
       changeOrigin: true,
-              pathRewrite: {                
-                '^/api': ''
-            }
+          pathRewrite: {                
+            '^/api': ''
+        }
         
       }
     }, // 设置代理

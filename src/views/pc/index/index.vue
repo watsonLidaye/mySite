@@ -1,6 +1,6 @@
 <template>
   <div class="pc">
-      <div class="leftBar">
+      <!-- <!-- <div class="leftBar">
           <div  class="header"></div>
           <div>介绍</div>
           <ul>
@@ -26,7 +26,7 @@
           </div>
           <div class="main mb60">
                 现如今各种朋友圈各种网络平台都有自己关系圈，很难说有一个发声的渠道，你知道有各种各样的眼睛正在盯着你浑身就不自在了，
-    你在网络所发表的言论要么是关系圈中的好好先生，要么是各大平台极端的宣泄，可谓一点意思也没有，本站想以一种文字条目的方式，记录本人的兴趣方向积累。
+    你在网络所发表的言论要么是关系圈中的好好先生，要么是各大平台极端的宣泄，可谓一点意思也没有，本站想以一种文字条目的方式，记录本人的兴趣方向积累。 
           </div>
           <div class="photo">
                <div class="title">最近瞎拍</div>
@@ -46,7 +46,7 @@
                <div class="title">和我说几句</div> 
           </div>
       </div>
-   
+    -->
   </div>
 </template>
 <script lang="ts">
@@ -57,10 +57,11 @@ export default {
     };
   },
   mounted(){
-      window.$Ajax.get('/api/image/getImage').then(res=>{
-        console.log(res)
-      }).catch(res=>{
-          console.log(res)
+
+       window.$utill.api.getImage().then(res => {
+           console.log(res)
+      })
+      .catch(res => {
       })
   },
   methods: {
