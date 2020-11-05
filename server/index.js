@@ -11,20 +11,18 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.all('*', (req, res, next) => {
     try {
         var promise = ''
-    console.log('------------------------')
-    console.log(typeof req.headers.origin)
-    console.log((req.headers.origin).toString().indexOf('localhost'))
-    if((req.headers.origin).toString().indexOf('localhost')>0
-        ||(req.headers.origin).toString().indexOf('ergouzi')>0){
-            promise=req.headers.origin  
-            res.header("Access-Control-Allow-Origin",promise);
-    }
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
-    res.header("Content-Type", "application/json;charset=utf-8");
+        if((req.headers.origin).toString().indexOf('localhost')>0
+            ||(req.headers.origin).toString().indexOf('ergouzi')>0){
+                promise=req.headers.origin  
+                res.header("Access-Control-Allow-Origin",promise);
+        }
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+        res.header("X-Powered-By",' 3.2.1')
+        res.header("Content-Type", "application/json;charset=utf-8");
     next();
     } catch (error) {
+        console.log(error)
         res.send({
             code: '0',
             msg: error
