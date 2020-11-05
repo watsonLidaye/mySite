@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.all('*', (req, res, next) => {
     var promise = ''
-    if(req.headers.origin.indexOf('localhost')>0
-        ||req.headers.origin.indexOf('ergouzi')>0){
+    if((req.headers.origin).toString().indexOf('localhost')>0
+        ||(req.headers.origin).toString().indexOf('ergouzi')>0){
             promise=req.headers.origin  
             res.header("Access-Control-Allow-Origin",promise);
     }
