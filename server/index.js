@@ -22,10 +22,9 @@ app.all('*', (req, res, next) => {
         res.header("Content-Type", "application/json;charset=utf-8");
     next();
     } catch (error) {
-        console.log(error)
         res.send({
-            code: '0',
-            msg: error
+            code: '-1',
+            msg: '不允许直接访问，谢谢'
         })
     }
     
