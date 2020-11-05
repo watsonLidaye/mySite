@@ -9,13 +9,13 @@ import './assets/css/public.css'
 import './assets/css/theme.scss'
 import $utill from './assets/js/util'
 
+
 import 'ant-design-vue/dist/antd.less'
 import Axios from 'axios'
 
 
 Vue.prototype.$utill = $utill
 Vue.prototype.$store = store
-
 const bus = new Vue()
 window.bus = bus
 window.Lockr = Lockr
