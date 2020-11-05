@@ -9,7 +9,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.all('*', (req, res, next) => {
-    var promise = ''
+    try {
+        var promise = ''
+    console.log('------------------------')
+    console.log(typeof req.headers.origin)
+    console.log((req.headers.origin).toString().indexOf('localhost'))
     if((req.headers.origin).toString().indexOf('localhost')>0
         ||(req.headers.origin).toString().indexOf('ergouzi')>0){
             promise=req.headers.origin  
@@ -20,6 +24,13 @@ app.all('*', (req, res, next) => {
     res.header("X-Powered-By",' 3.2.1')
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
+    } catch (error) {
+        res.send({
+            code: '0',
+            msg: error
+        })
+    }
+    
   });
 // 后端api路由
 app.use('/api/user', userApi);
