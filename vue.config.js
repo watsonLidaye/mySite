@@ -92,7 +92,7 @@ module.exports = {
     proxy: {
       '/api': {
         // 目标 API 地址
-      target: 'http://127.0.0.1:3000/api/',
+      target: process.env.NODE_ENV === "dev"?'http://127.0.0.1:3000/api/':'http://www.ergouzi.com.cn:3000/api/',
       changeOrigin: true,
           pathRewrite: {                
             '^/api': ''

@@ -11,17 +11,13 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 const api = Object.assign(daily, admin, order, {})
 //  域名
+console.log(process.env.NODE_ENV)
 const urls = (function () {
   let urls = ''
-  if (location.href.indexOf('test') != -1 || location.href.indexOf('localhost') != -1 || location.href.indexOf('127.0.0.1') != -1) {
+  if (process.env.NODE_ENV === "dev"){
     urls = 'http://127.0.0.1:3000/'
-  } else {
-    urls = 'http://www.ergouzi.com.cn:3000/'
-  }
-  if (process.env.NODE_ENV === "'dev'"){
-    urls = 'api'
 } else {
-  urls = ''
+  urls = 'http://www.ergouzi.com.cn:3000/'
 }
   return urls
 })()
@@ -71,6 +67,7 @@ function POST(path, data) {
 
 //get请求通用函数
 function GETPromise(path, data) {
+  console.log(`${urls}${path}`)
   return axios({
     method: 'GET',
     url: `${urls}${path}`,
