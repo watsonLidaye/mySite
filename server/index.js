@@ -9,7 +9,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.all('*', (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    var promise = ''
+    if(req.headers.origin.indexOf('localhost')>0
+        ||req.headers.origin.indexOf('ergouzi')>0){
+            promise=req.headers.origin  
+            res.header("Access-Control-Allow-Origin",promise);
+    }
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By",' 3.2.1')
