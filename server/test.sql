@@ -11,7 +11,7 @@
  Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 04/11/2020 16:16:15
+ Date: 05/11/2020 17:52:45
 */
 
 SET NAMES utf8mb4;
@@ -55,6 +55,16 @@ CREATE TABLE `image`  (
   `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of image
+-- ----------------------------
+INSERT INTO `image` VALUES ('1', '/images/normal/_MG_5411_1.jpg', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('2', '/images/normal/_MG_8754.jpg', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('3', '/images/normal/_MG_6099.JPG', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('4', '/images/normal/_MG_4939.JPG', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('5', '/images/normal/_MG_3865.jpg', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('6', '/images/normal/_MG_9762.jpg', '1', '1', '0', '0', '2020-11-5');
 
 -- ----------------------------
 -- Table structure for img_type
