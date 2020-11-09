@@ -32,15 +32,11 @@ router.post('/addUser', (req, res) => {
     var list = []
     conn.query(table,function(err,result){
         if (err) {
-            console.log(err);
         }
         if (result) {
         
          list = result
-         console.log(list)
          for(var i=0;i<list.length;i++) {
-             console.log(i)
-            console.log(list[i].id)
             if(list[i].id>=index){
                 index = list[i].id+1
             }
@@ -55,8 +51,6 @@ router.post('/addUser', (req, res) => {
         })
         }
     })
-    console.log('index')
-    console.log(index)
    
 });
 

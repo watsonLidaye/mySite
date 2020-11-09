@@ -1,5 +1,6 @@
 const userApi = require('./api/userApi');
 const recentImage = require('./api/recentImage');
+const shortContent = require('./api/shortContent');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -32,6 +33,7 @@ app.all('*', (req, res, next) => {
 // 后端api路由
 app.use('/api/user', userApi);
 app.use('/api/image', recentImage);
+app.use('/api/shortContent', shortContent);
 
 // 监听端口
 app.listen(3000);

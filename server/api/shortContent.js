@@ -9,8 +9,8 @@ var conn = mysql.createConnection(models.mysql);
 conn.connect();
 
 // 图片获取接口
-router.get('/getImage', (req, res) => {
-    var table = $sql.image.get
+router.get('/get', (req, res) => {
+    var table = $sql.shortContent.get
     conn.query(table,function(err,result){
         if (err) {
             console.log(err);
@@ -23,8 +23,6 @@ router.get('/getImage', (req, res) => {
         })
         }
     })
-
-   
 });
 
 module.exports = router;

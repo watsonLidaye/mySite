@@ -11,7 +11,7 @@
  Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 05/11/2020 17:52:45
+ Date: 09/11/2020 14:11:37
 */
 
 SET NAMES utf8mb4;
@@ -100,6 +100,25 @@ CREATE TABLE `shortcontent`  (
   `createTime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of shortcontent
+-- ----------------------------
+INSERT INTO `shortcontent` VALUES (1, '倒影只不过是倒影而已', '/images/normal/_MG_9977.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (2, '靖港古镇旁边的狗子', '/images/normal/_MG_6064.JPG', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (3, '自然的味道', '/images/normal/_MG_5332.JPG', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (4, '橘子洲头的桥', '/images/normal/_MG_3261_1.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (5, '橱窗里的自己', '/images/normal/_MG_7984.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (6, '冬日里微笑的狗子', '/images/normal/_MG_1597.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (7, '湘江大桥每天的车流', '/images/normal/_MG_3382.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (8, '起风了', '/images/normal/_MG_8780.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (9, '暗', '/images/normal/_MG_7637_1.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (10, '日常', '/images/normal/_MG_8554.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (11, '整装待发拍照去，删图选图把家还', '/images/normal/_MG_3023.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (12, '梅溪湖破旧的单车', '/images/normal/_MG_3667.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (13, '冲鸭！', '/images/normal/_MG_4914.JPG', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (14, '你已经间隔1年没弹琴了', '/images/normal/_MG_5411_1.jpg', '0', '2020-11-9');
+INSERT INTO `shortcontent` VALUES (15, '这样的糖油粑粑才正宗', '/images/normal/_MG_6055.JPG', '0', '2020-11-9');
 
 -- ----------------------------
 -- Table structure for user
