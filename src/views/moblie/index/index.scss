@@ -154,12 +154,6 @@
             }
 
         }
-        .photo_item:hover{
-            cursor: pointer;     
-        }
-        .photo_item:hover .photo_img{
-           transform: scale(1.2);
-        }
     }
     .record{
         background: #fff;
@@ -247,23 +241,6 @@
     transition: all linear .4s;
     background: rgba(0,0,0,.7);
 }
-.item-desc:hover{
-    cursor: pointer;
-}
-.item-desc:hover .modal{
-    z-index: 4;
-    opacity: 1
-}
-.item-desc:hover .searhBar{
-    top: 30%;
-   
-}
-.itemhover{
-    transition: all ease-in-out .3s;
-}
-.hoverSee:hover .itemhover{
-    transform: scale(1.2);
-}
 .bg_modal{
     position: fixed;
     top: 0;
@@ -295,9 +272,6 @@
     text-align: center;
     font-size: .24rem;
 }
-.item-body:hover{
-    box-shadow: .10rem .10rem .05rem #f0f0f0 ;
-}
 .content_item{
     padding: 0  .30rem .20rem;
     border-bottom: 1px solid #ddd;
@@ -306,10 +280,6 @@
         padding-top: .20rem;
         font-weight: bold;
         font-size: .34rem;
-    }
-    h2:hover{
-        color: #1890ff;
-        cursor: pointer;
     }
 }
 .connect_me{
@@ -353,9 +323,6 @@
     outline: none;
     position: relative;
   }
-.purple:hover{
-    cursor: pointer;
-}
   .purple:before{
     content: '';
     display: block;
@@ -381,9 +348,6 @@
      box-shadow: 0 .04rem .15rem 0 rgba(236, 116, 149, 0.75);
   }
     
-  .purple:hover:before {
-    background-position: left bottom;
-  }
   .header{
         width: 100%;
         box-sizing: border-box;
