@@ -75,7 +75,7 @@
                 <div class="title"><a-icon type="instagram" /> 最近瞎拍</div>
                 <div class="photo_list" >
                     <div  class="photo_item" :style="{width:`${long}px`,height:`${long}px`,margin:`0 ${padding}px 30px`}" v-for="(item,index) in list" :key="index">
-                        <img class="photo_img" :preview="index" :src="`${path}${item.image}`"></img>
+                        <img class="photo_img" :src="`${path}${item.image}`" :preview="index"></img>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                                 </template>
                                 <template v-if="item.shortContentId==0">
                                     <div class="item-desc hoverSee" >
-                                        <img class="itemhover" :preview-text="item.shortContent" :preview="index" :src="`${path}${item.image}`" alt="" srcset="" style="width:100%">
+                                        <img class="itemhover" :preview-text="item.shortContent" v-lazy="`${path}${item.image}`" :preview="index+'bottom'"  alt="" srcset="" style="width:100%">
                                         
                                     </div>
                                 </template>
@@ -138,8 +138,8 @@
                       <a-textarea placeholder="请输入您要说的话" :rows="4" allow-clear maxlength='100' :autosize='false' v-model="remark"  @change="onChange"/>
                       <div class="word_input">{{allowInput}}/100</div>
                    </div>
-                    <div id="frozen-btn">
-                    <button class="purple">Hover me</button>
+                    <div id="frozen-btn" @click="submit">
+                    <button class="purple">发送</button>
                 </div>
                </div>
               
@@ -215,14 +215,22 @@ export default {
       jumpTo(url){
         this.$router.push({path:'/pc/shortContent'})
       },
+      submit(){
+          this.$notification.open({
+            message: '温馨提示',
+            description:
+            '功能正在缓慢开发中，请耐心等待',
+            duration: 1,   
+        });
+      },
       jump(){
-          console.log('点击')
-           this.$notification.open({
-        message: '温馨提示',
-        description:
-          '功能正在缓慢开发中，请耐心等待',
-          duration: 1,   
-      });
+        console.log('点击')
+        this.$notification.open({
+            message: '温馨提示',
+            description:
+            '功能正在缓慢开发中，请耐心等待',
+            duration: 1,   
+        });
       }
   },
 

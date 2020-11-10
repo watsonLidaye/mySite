@@ -14,7 +14,7 @@ import { Icon,Button,notification,Input  } from 'ant-design-vue';
 import  './assets/js/public'
 import 'ant-design-vue/dist/antd.less'
 import Axios from 'axios'
-
+import VueLazyload from 'vue-lazyload'
 import waterfall from 'vue-waterfall2'
 Vue.use(waterfall)
 Vue.prototype.$utill = $utill
@@ -30,7 +30,10 @@ window.Lockr = Lockr
 window.$store = store
 window.$utill = $utill
 window.$Ajax = Axios
-
+Vue.use(VueLazyload, {
+  loading: require('./assets/image/u=122436735,1720737121&fm=26&gp=0.jpg'),//加载中图片，一定要有，不然会一直重复加载占位图
+  error: require('./assets/image/u=122436735,1720737121&fm=26&gp=0.jpg')  //加载失败图片
+});
 Vue.config.productionTip = false
 
 new Vue({

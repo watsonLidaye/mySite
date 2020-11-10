@@ -43,7 +43,7 @@
       </div>
       <div class="totalModal" @click="showMenu" v-if="menuClick"></div>
       <div class="header">
-        <div class="header_title">华生李的妙脆角小屋</div>
+        <div class="header_title">Watson.Li</div>
         <div @click="showMenu" >
           <a-icon type="menu" class="tran3" :class="menuClick?'tagggle':''" />
         </div>
