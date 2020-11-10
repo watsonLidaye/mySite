@@ -15,7 +15,7 @@
       }
     },
     mounted(){
-      if(document.body.clientWidth>750){
+      if(document.body.clientWidth>1100){
         this.$router.replace('/pc')
       }else{
         this.$router.replace('/moblie')

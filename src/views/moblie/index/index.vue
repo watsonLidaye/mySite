@@ -1,59 +1,52 @@
 <template>
-  <div class="pcIndex">
-      <div class="leftBar">
-           <div class="leftBar">
-               <div class="clear">
-            <div  class="header">
-                <img src="http://www.ergouzi.com.cn/images/normal/48bda875f9fc5d94908b941ff3507ae.jpg" alt="" srcset="" class='left_img'>
-                <div>
-                    <div style="margin-bottom:20px">李二狗子</div>
-                    <div style="font-size:14px">摄影爱好者</div>
-                </div>
-            </div>
-            </div>
-            <ul class="left_menu">
-                <li @click="jumpTo('/pc/shortContent')">
-                    瞎BB
-                    <div class="line_area">
-                        <div class="line_bar">
-                            <div class="line_scoss"></div>
-                            <div class="line_ciclr"></div>
-                            <div class="line_scoss"></div>
-                        </div>
-                    </div>
-                </li>
-                <li @click="jumpTo('/pc/content')">
-                    文章
-                    <div class="line_area">
-                        <div class="line_bar">
-                            <div class="line_scoss"></div>
-                            <div class="line_ciclr"></div>
-                            <div class="line_scoss"></div>
-                        </div>
-                    </div>
-                </li>
-                <li @click="jumpTo('/pc/images')">
-                    图集
-                    <div class="line_area">
-                        <div class="line_bar">
-                            <div class="line_scoss"></div>
-                            <div class="line_ciclr"></div>
-                            <div class="line_scoss"></div>
-                        </div>
-                    </div>
-                </li>
-                <li @click="jumpTo('/pc/lab')">
-                    实验室
-                    <div class="line_area">
-                        <div class="line_bar">
-                            <div class="line_scoss"></div>
-                            <div class="line_ciclr"></div>
-                            <div class="line_scoss"></div>
-                        </div>
-                    </div>
-                </li>
-          </ul>
+  <div class="moblieIndex">
+      <div class="leftBar" :class="menuClick?'show_menu':'hide_menu'">
+           <div class="leftBar_inner">
+              <div  class="header_left">
+                  <img src="http://www.ergouzi.com.cn/images/normal/48bda875f9fc5d94908b941ff3507ae.jpg" alt="" srcset="" class='left_img'>
+                  <div>
+                      <div style="margin-bottom:.20rem">李二狗子</div>
+                      <div style="font-size:14px">摄影爱好者</div>
+                  </div>
+              </div>
+              <ul class="left_menu">
+                  <li @click="jumpTo('/moblie/shortContent')">
+                      瞎BB
+                      <div class="line_area">
+                      </div>
+                      <div class="line_area2">
+                      </div>
+                  </li>
+                  <li @click="jumpTo('/moblie/content')">
+                      文章
+                      <div class="line_area">
+                      </div>
+                      <div class="line_area2">
+                      </div>
+                  </li>
+                  <li @click="jumpTo('/moblie/images')">
+                      图集
+                      <div class="line_area">
+                      </div>
+                      <div class="line_area2">
+                      </div>
+                  </li>
+                  <li @click="jumpTo('/moblie/lab')">
+                      实验室
+                      <div class="line_area">
+                      </div>
+                      <div class="line_area2">
+                      </div>
+                  </li>
+              </ul>
           </div>
+      </div>
+      <div class="totalModal" @click="showMenu" v-if="menuClick"></div>
+      <div class="header">
+        <div class="header_title">华生李的妙脆角小屋</div>
+        <div @click="showMenu" >
+          <a-icon type="menu" class="tran3" :class="menuClick?'tagggle':''" />
+        </div>
       </div>
       <div class="content">
             <div class="first_sceen">
@@ -74,7 +67,7 @@
                 </div>
                 <div class="title"><a-icon type="instagram" /> 最近瞎拍</div>
                 <div class="photo_list" >
-                    <div  class="photo_item" :style="{width:`${long}px`,height:`${long}px`,margin:`0 ${padding}px 30px`}" v-for="(item,index) in list" :key="index">
+                    <div  class="photo_item" :style="{width:`${long}px`,height:`${long}px`,padding:`0 ${padding}px 30px`}" v-for="(item,index) in list" :key="index">
                         <img class="photo_img" :preview="index" :src="`${path}${item.image}`"></img>
                     </div>
                 </div>
@@ -163,11 +156,12 @@ export default {
         seePicture:'',
         long33:0,
         gutterWidth:0,
-        col:4,
+        col:2,
         items:[
         ],
         remark:'',
-        allowInput:0
+        allowInput:0,
+        menuClick:false
     };
   },
   
@@ -175,13 +169,13 @@ export default {
 
   },
   mounted(){
-      this.long=document.getElementById('photo').clientWidth/4
-      this.long33 = document.getElementById('vueWaterfall').clientWidth/4.2
+      this.long=document.getElementById('photo').clientWidth/2
+      this.long33 = document.getElementById('vueWaterfall').clientWidth/2
       this.padding =document.getElementById('photo').clientWidth/40
       window.onresize = () => {
         return (() => {
-           this.long=document.getElementById('photo').clientWidth/4
-           this.padding =document.getElementById('photo').clientWidth/40
+           this.long=document.getElementById('photo').clientWidth/2
+           this.padding =document.getElementById('photo').clientWidth/2
            this.long33 = document.getElementById('vueWaterfall').clientWidth/4.2
         })()
     }
@@ -199,6 +193,9 @@ export default {
       })
   },
   methods: {
+    showMenu(){
+      this.menuClick =!this.menuClick
+    },
       showImg(img){
           this.seePicture=this.seePicture?'':this.path+img
       },
@@ -213,7 +210,7 @@ export default {
           }
       },
       jumpTo(url){
-        this.$router.push({path:'/pc/shortContent'})
+        this.$router.push({path:url})
       },
       jump(){
           console.log('点击')

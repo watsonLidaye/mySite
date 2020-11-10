@@ -19,13 +19,61 @@ const routes: Array<RouteConfig> = [
         path: '/pc/index',
         name: 'pc',
         component: (resolve: any) => require(['../views/pc/index/index.vue'], resolve),
-      }
+      },
+      {
+        path: '/pc/shortContent',
+        name: 'pcshortContent',
+        component: (resolve: any) => require(['../views/pc/shortContent/index.vue'], resolve),
+      },
+      {
+        path: '/pc/content',
+        name: 'pcContent',
+        component: (resolve: any) => require(['../views/pc/pcContent/index.vue'], resolve),
+      },
+      {
+        path: '/pc/images',
+        name: 'pcImages',
+        component: (resolve: any) => require(['../views/pc/pcImages/index.vue'], resolve),
+      },
+      {
+        path: '/pc/lab',
+        name: 'pclab',
+        component: (resolve: any) => require(['../views/pc/lab/index.vue'], resolve),
+      },
     ]
   },
   {
     path: '/moblie',
     name: 'moblie',
+    redirect:'/moblie/index',
     component: (resolve: any) => require(['../views/moblie/moblie.vue'], resolve),
+    children:[
+      {
+        path: '/moblie/index',
+        name: 'moblie',
+        component: (resolve: any) => require(['../views/moblie/index/index.vue'], resolve),
+      },
+      {
+        path: '/moblie/shortContent',
+        name: 'moblieshortContent',
+        component: (resolve: any) => require(['../views/moblie/shortContent/index.vue'], resolve),
+      },
+      {
+        path: '/moblie/content',
+        name: 'moblieContent',
+        component: (resolve: any) => require(['../views/moblie/Content/index.vue'], resolve),
+      },
+      {
+        path: '/moblie/images',
+        name: 'moblieImages',
+        component: (resolve: any) => require(['../views/moblie/Images/index.vue'], resolve),
+      },
+      {
+        path: '/moblie/lab',
+        name: 'moblielab',
+        component: (resolve: any) => require(['../views/moblie/lab/index.vue'], resolve),
+      },
+    ]
   },
 ]
 

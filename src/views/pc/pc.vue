@@ -1,7 +1,7 @@
 <template>
-  <div class="pc">
+  <div class="pcPage">
       <router-view >
-            </router-view>
+        </router-view>
   </div>
 </template>
 <script lang="ts">

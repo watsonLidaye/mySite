@@ -1,6 +1,5 @@
 <template>
-  <div class="pc">
-    this is moblie
+  <div class="moblie">
     <router-view >
     </router-view>
   </div>
