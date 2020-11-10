@@ -7,7 +7,7 @@ const Timestamp = new Date().getTime()
 
 module.exports = {
   // 静态资源目录 (js, css, img, fonts)
-  publicPath: '/',
+  publicPath: './',
     // 输出文件目录
     outputDir: 'dist',
     assetsDir: 'assets', // 静态资源目录 (js, css, img, fonts)
