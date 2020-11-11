@@ -1,6 +1,6 @@
 <template>
   <div class="moblieIndex">
-      <div class="leftBar" :class="menuClick?'show_menu':'hide_menu'">
+      <div class="leftBars" :class="menuClick?'show_menu':'hide_menu'">
            <div class="leftBar_inner">
               <div  class="header_left">
                   <img src="http://www.ergouzi.com.cn/images/normal/48bda875f9fc5d94908b941ff3507ae.jpg" alt="" srcset="" class='left_img'>
@@ -42,7 +42,7 @@
           </div>
       </div>
       <div class="totalModal" @click="showMenu" v-if="menuClick"></div>
-      <div class="header">
+      <div class="headers">
         <div class="header_title">Watson.Li</div>
         <div @click="showMenu" >
           <a-icon type="menu" class="tran3" :class="menuClick?'tagggle':''" />

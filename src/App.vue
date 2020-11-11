@@ -15,11 +15,14 @@
       }
     },
     mounted(){
-      if(document.body.clientWidth>1100){
-        this.$router.replace('/pc')
-      }else{
-        this.$router.replace('/moblie')
-      }
+
+      console.log(this.$route)
+      // if(document.body.clientWidth>1100&&this.$route.fullPath==='/'){
+      //   this.$router.replace('/pc')
+      // }
+      // if(document.body.clientWidth<1100&&this.$route.fullPath==='/'){
+      //   this.$router.replace('/moblie')
+      // }
       console.log(document.body.clientWidth)
     }
   }

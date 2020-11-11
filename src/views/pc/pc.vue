@@ -12,6 +12,11 @@ export default {
     };
   },
   methods: {
+  },
+  mounted(){
+    if(document.body.clientWidth<=1100){
+        this.$router.replace('/moblie')
+      }
   }
 };
 </script>
