@@ -1,6 +1,5 @@
 <template>
-  <div class="login">
-    this is indexPage
+  <div class="login">    
     <!-- <div>
     <input type="text" v-model="name" style="border:1px solid #eee" />
     <input type="text" v-model="age" style="border:1px solid #eee" />
@@ -17,6 +16,13 @@ export default {
         name:'',
         age:''
     };
+  },
+  mounted(){
+    if(document.body.clientWidth<=1100){
+        this.$router.replace('/moblie')
+      }else{
+        this.$router.replace('/pc')
+      }
   },
   methods: {
     addUser(){
