@@ -16,6 +16,8 @@ import 'ant-design-vue/dist/antd.less'
 import Axios from 'axios'
 import VueLazyload from 'vue-lazyload'
 import waterfall from 'vue-waterfall2'
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 Vue.use(waterfall)
 Vue.prototype.$utill = $utill
 Vue.prototype.$store = store
