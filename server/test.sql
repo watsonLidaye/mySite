@@ -11,7 +11,7 @@
  Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 10/11/2020 16:22:22
+ Date: 11/11/2020 09:25:36
 */
 
 SET NAMES utf8mb4;
@@ -59,12 +59,12 @@ CREATE TABLE `image`  (
 -- ----------------------------
 -- Records of image
 -- ----------------------------
-INSERT INTO `image` VALUES ('1', '/images/normal/_MG_5411_1.jpg', '1', '1', '0', '0', '2020-11-5');
-INSERT INTO `image` VALUES ('2', '/images/normal/_MG_8754.jpg', '1', '1', '0', '0', '2020-11-5');
-INSERT INTO `image` VALUES ('3', '/images/normal/_MG_6099.JPG', '1', '1', '0', '0', '2020-11-5');
-INSERT INTO `image` VALUES ('4', '/images/normal/_MG_4939.JPG', '1', '1', '0', '0', '2020-11-5');
-INSERT INTO `image` VALUES ('5', '/images/normal/_MG_3865.jpg', '1', '1', '0', '0', '2020-11-5');
-INSERT INTO `image` VALUES ('6', '/images/normal/_MG_9762.jpg', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('1', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/_MG_1282.JPG', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('2', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_8754.jpg', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('3', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_6099.JPG', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('4', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_4939.JPG', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('5', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3865.jpg', '1', '1', '0', '0', '2020-11-5');
+INSERT INTO `image` VALUES ('6', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_9762.jpg', '1', '1', '0', '0', '2020-11-5');
 
 -- ----------------------------
 -- Table structure for img_type
@@ -105,21 +105,21 @@ CREATE TABLE `shortcontent`  (
 -- ----------------------------
 -- Records of shortcontent
 -- ----------------------------
-INSERT INTO `shortcontent` VALUES (1, '倒影只不过是倒影而已', '/images/normal/_MG_9977.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (2, '靖港古镇旁边的狗子', '/images/normal/_MG_6064.JPG', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (3, '自然的味道', '/images/normal/_MG_5332.JPG', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (4, '橘子洲头的桥', '/images/normal/_MG_3261_1.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (5, '橱窗里的自己', '/images/normal/_MG_7984.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (6, '冬日里微笑的狗子', '/images/normal/_MG_1597.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (7, '湘江大桥每天的车流', '/images/normal/_MG_3382.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (8, '起风了', '/images/normal/_MG_8780.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (9, '暗', '/images/normal/_MG_7637_1.jpg', '0', '2020-11-9', 1);
-INSERT INTO `shortcontent` VALUES (10, '日常', '/images/normal/_MG_8554.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (11, '整装待发拍照去，删图选图把家还', '/images/normal/_MG_3023.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (12, '梅溪湖破旧的单车', '/images/normal/_MG_3667.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (13, '冲鸭！', '/images/normal/_MG_4914.JPG', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (14, '你已经间隔1年没弹琴了', '/images/normal/_MG_5411_1.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (15, '这样的糖油粑粑才正宗', '/images/normal/_MG_6055.JPG', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (1, '倒影只不过是倒影而已', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_9977.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (2, '靖港古镇旁边的狗子', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_6064.JPG', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (3, '自然的味道', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_5332.JPG', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (4, '橘子洲头的桥', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3261_1.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (5, '橱窗里的自己', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_7984.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (6, '冬日里微笑的狗子', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_1597.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (7, '湘江大桥每天的车流', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3382.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (8, '起风了', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_8780.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (9, '暗', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_7637_1.jpg', '0', '2020-11-9', 1);
+INSERT INTO `shortcontent` VALUES (10, '日常', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_8554.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (11, '整装待发拍照去，删图选图把家还', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3023.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (12, '梅溪湖破旧的单车', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3667.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (13, '冲鸭！', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_4914.JPG', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (14, '你已经间隔1年没弹琴了', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_5411_1.jpg', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (15, '这样的糖油粑粑才正宗', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_6055.JPG', '0', '2020-11-9', 0);
 
 -- ----------------------------
 -- Table structure for user

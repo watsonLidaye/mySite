@@ -75,7 +75,7 @@
                 <div class="title"><a-icon type="instagram" /> 最近瞎拍</div>
                 <div class="photo_list" >
                     <div  class="photo_item" :style="{width:`${long}px`,height:`${long}px`,margin:`0 ${padding}px 30px`}" v-for="(item,index) in list" :key="index">
-                        <img class="photo_img" :src="`${path}${item.image}`" :preview="index"></img>
+                        <img class="photo_img" :src="`${item.image}`" :preview="index"></img>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                             <div class="item-body">
                                 <template v-if="item.shortContentId!=0">
                                    <div class="item-desc" @click="jumpShort(item.shortContentId,item.image)">
-                                        <img :src="`${path}${item.image}`" alt="" srcset="" style="width:100%">
+                                        <img :src="`${item.image}`" alt="" srcset="" style="width:100%">
                                         <div class="modal">
                                             
                                         </div>
@@ -99,7 +99,7 @@
                                 </template>
                                 <template v-if="item.shortContentId==0">
                                     <div class="item-desc hoverSee" >
-                                        <img class="itemhover" :preview-text="item.shortContent" v-lazy="`${path}${item.image}`" :preview="index+'bottom'"  alt="" srcset="" style="width:100%">
+                                        <img class="itemhover" :preview-text="item.shortContent" v-lazy="`${item.image}`" :preview="index+'bottom'"  alt="" srcset="" style="width:100%">
                                         
                                     </div>
                                 </template>
@@ -145,10 +145,7 @@
               
           </div>
      </div>
-     <div class="bg_modal" v-if="seePicture"></div>
-    <div class="preview_iew" :class="seePicture?'see_pic':'no_see'">
-        <img :src="seePicture" alt="" class="see_pic_box">
-    </div>
+     
   </div>
 </template>
 <script lang="ts">
@@ -200,14 +197,14 @@ export default {
   },
   methods: {
       showImg(img){
-          this.seePicture=this.seePicture?'':this.path+img
+          this.seePicture=this.seePicture?'':img
       },
       onChange(e){
           console.log(e)
       },
       jumpShort(id,img){
           if(id==0){
-              this.seePicture=this.seePicture?'':this.path+img
+              this.seePicture=this.seePicture?'':img
           }else{
               this.$router.push({path:'/pc/shortContent',param:{id:id}})
           }
