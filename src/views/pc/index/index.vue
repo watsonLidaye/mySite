@@ -172,6 +172,10 @@ export default {
   },
   
   created(){
+      if(window.localStorage.getItem('jum1')){
+          location.reload();
+          window.localStorage.setItem('jum1','')
+      }
 
   },
   mounted(){
