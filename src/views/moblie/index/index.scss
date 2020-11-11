@@ -100,7 +100,7 @@
 }
 .content{
     width: 100%;
-    
+    box-sizing: border-box;
     .title{
         color: #787878;
         font-size: .36rem;
@@ -110,7 +110,7 @@
     }
     .title1{
         color: #fff;
-        font-size: .30rem;
+        font-size: .34rem;
         letter-spacing: .02rem;
         font-weight: 400;
         padding: .40rem .30rem;

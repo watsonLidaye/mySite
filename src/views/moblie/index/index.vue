@@ -92,7 +92,7 @@
                                 </template>
                                 <template v-if="item.shortContentId==0">
                                     <div class="item-desc hoverSee" >
-                                        <img class="itemhover" :preview-text="item.shortContent" :preview="index" :src="`${item.image}`" alt="" srcset="" style="width:100%">
+                                        <img class="itemhover" :preview-text="item.shortContent" :preview="index" v-lazy="`${item.image}`" alt="" srcset="" style="width:100%">
                                         
                                     </div>
                                 </template>
@@ -138,10 +138,7 @@
               
           </div>
      </div>
-     <div class="bg_modal" v-if="seePicture"></div>
-    <div class="preview_iew" :class="seePicture?'see_pic':'no_see'">
-        <img :src="seePicture" alt="" class="see_pic_box">
-    </div>
+    
   </div>
 </template>
 <script lang="ts">
