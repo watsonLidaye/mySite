@@ -10,7 +10,7 @@ import './assets/css/theme.scss'
 import $utill from './assets/js/util'
 import preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
-import { Icon,Button,notification,Input  } from 'ant-design-vue';
+import { Icon,Button,notification,Input,message  } from 'ant-design-vue';
 import  './assets/js/public'
 import 'ant-design-vue/dist/antd.less'
 import Axios from 'axios'
@@ -20,6 +20,7 @@ Vue.use(waterfall)
 Vue.prototype.$utill = $utill
 Vue.prototype.$store = store
 Vue.prototype.$notification=notification
+Vue.prototype.$message = message
 Vue.use(preview)
 Vue.use(Icon);
 Vue.use(Button);

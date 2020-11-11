@@ -6,5 +6,9 @@ export default {
   getShortContent:{
     url:'api/shortContent/get',
     methods:'GET'
-  }
+  },
+  addConnect:{
+    url:'api/connectApi/addConnect',
+    methods:'POST'
+  },
 }

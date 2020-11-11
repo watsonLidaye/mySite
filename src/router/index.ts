@@ -18,7 +18,7 @@ const routes: Array<RouteConfig> = [
     children:[
       {
         path: '/pc/index',
-        name: 'pc',
+        name: 'pcindex',
         component: (resolve: any) => require(['../views/pc/index/index.vue'], resolve),
       },
       {
@@ -51,7 +51,7 @@ const routes: Array<RouteConfig> = [
     children:[
       {
         path: '/moblie/index',
-        name: 'moblie',
+        name: 'moblieindex',
         component: (resolve: any) => require(['../views/moblie/index/index.vue'], resolve),
       },
       {

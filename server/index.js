@@ -1,6 +1,7 @@
 const userApi = require('./api/userApi');
 const recentImage = require('./api/recentImage');
 const shortContent = require('./api/shortContent');
+const connectApi = require('./api/connectApi');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -15,9 +16,10 @@ app.all('*', (req, res, next) => {
         if((req.headers.origin).toString().indexOf('localhost')>0
             ||(req.headers.origin).toString().indexOf('ergouzi')>0){
                 promise=req.headers.origin  
+                console.log(promise)
                 res.header("Access-Control-Allow-Origin",promise);
         }
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Headers", "Content-Type,Access-Token");
         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
         res.header("X-Powered-By",' 3.2.1')
         res.header("Content-Type", "application/json;charset=utf-8");
@@ -34,6 +36,7 @@ app.all('*', (req, res, next) => {
 app.use('/api/user', userApi);
 app.use('/api/image', recentImage);
 app.use('/api/shortContent', shortContent);
+app.use('/api/connectApi', connectApi);
 
 // 监听端口
 app.listen(3000);

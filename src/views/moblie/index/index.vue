@@ -48,7 +48,7 @@
           <a-icon type="menu" class="tran3" :class="menuClick?'tagggle':''" />
         </div>
       </div>
-      <div class="content">
+      <div class="content_moblie">
             <div class="first_sceen">
                 <div class="title1">一些胡话</div>
                 <div class="main">
@@ -68,7 +68,7 @@
                 <div class="title"><a-icon type="instagram" /> 最近瞎拍</div>
                 <div class="photo_list" >
                     <div  class="photo_item" :style="{width:`${long}px`,height:`${long}px`,padding:`0 ${padding}px 30px`}" v-for="(item,index) in list" :key="index">
-                        <img class="photo_img" :preview="index" :src="`${item.image}`"></img>
+                        <img class="photo_img" preview="1" :src="`${item.image}`"></img>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                                 </template>
                                 <template v-if="item.shortContentId==0">
                                     <div class="item-desc hoverSee" >
-                                        <img class="itemhover" :preview-text="item.shortContent" :preview="index" v-lazy="`${item.image}`" alt="" srcset="" style="width:100%">
+                                        <img class="itemhover" :preview-text="item.shortContent" :preview="index+'bottom'" v-lazy="`${item.image}`" alt="" srcset="" style="width:100%">
                                         
                                     </div>
                                 </template>
@@ -124,15 +124,18 @@
                <div class="title"><a-icon type="sound" style="margin-right:10px" />和我说几句</div>
                <div class="connect_me">
                    <div class="connect_input">
-                       <a-input placeholder="请输入您的姓名" class="connect_item"  size="large" />
-                       <a-input placeholder="请输入您的邮箱号" class="connect_item"  size="large" />
+                       <a-input placeholder="请输入您的姓名"  v-model="name" :maxLength="10" class="connect_item"   />
+                      
+                   </div>
+                   <div class="connect_input">
+                        <a-input placeholder="请输入您的手机号码或者邮箱号码" v-model="email" :maxLength="30" class="connect_item"   />
                    </div>
                    <div class="connect_input mt20">
-                      <a-textarea placeholder="请输入您要说的话" :rows="4" allow-clear maxlength='100' :autosize='false' v-model="remark"  @change="onChange"/>
+                      <a-textarea placeholder="请输入您要说的话" :rows="4" allow-clear :maxLength='100' :autoSize='false' v-model="remake" />
                       <div class="word_input">{{allowInput}}/100</div>
                    </div>
-                    <div id="frozen-btn">
-                    <button class="purple">Hover me</button>
+                    <div id="frozen-btn"  @click="submit">
+                    <button class="purple">发送</button>
                 </div>
                </div>
               
@@ -154,9 +157,11 @@ export default {
         long33:0,
         gutterWidth:0,
         col:2,
+        name:'',
+        email:'',
         items:[
         ],
-        remark:'',
+        remake:'',
         allowInput:0,
         menuClick:false
     };
@@ -193,36 +198,86 @@ export default {
     showMenu(){
       this.menuClick =!this.menuClick
     },
-      showImg(img){
-          this.seePicture=this.seePicture?'':img
-      },
-      onChange(e){
-          console.log(e)
-      },
-      jumpShort(id,img){
-          if(id==0){
-              this.seePicture=this.seePicture?'':img
-          }else{
-              this.$router.push({path:'/pc/shortContent',param:{id:id}})
-          }
-      },
-      jumpTo(url){
-        this.$router.push({path:url})
-      },
-      jump(){
-          console.log('点击')
-           this.$notification.open({
+    showImg(img){
+        this.seePicture=this.seePicture?'':img
+    },
+    onChange(e){
+        console.log(e)
+    },
+    inputChange(e){
+        console.log(e.detail.value)
+    },
+    jumpShort(id,img){
+        if(id==0){
+            this.seePicture=this.seePicture?'':img
+        }else{
+            this.$router.push({path:'/pc/shortContent',param:{id:id}})
+        }
+    },
+    jumpTo(url){
+    this.$router.push({path:url})
+    },
+    jump(){
+        console.log('点击')
+        this.$notification.open({
         message: '温馨提示',
         description:
-          '功能正在缓慢开发中，请耐心等待',
-          duration: 1,   
-      });
-      }
+            '功能正在缓慢开发中，请耐心等待',
+            duration: 1,   
+        });
+    },
+    submit(){
+        if(!this.name){
+            this.$message.warning('请告诉我你的名字！');
+            return false
+        }
+        if(!this.email){
+            this.$message.warning('请告诉我你的联系方式！');
+            return false
+        }
+        if(!this.remake){
+            this.$message.warning('听不清，请写内容');
+            return false
+        }
+
+        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/g.test(this.email))){ 
+             if(!(/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.email))){
+                this.$message.warning("请告诉我正确的邮箱号码");  
+                return false
+            }else if((/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.email))){
+
+            } else {
+                this.$message.warning("请告诉我正确手机号码");  
+                return false 
+            }
+            
+        }
+       console.log(this.name,this.email,this.remake)
+       let data ={
+           name:this.name,
+           connect:this.email,
+           remake:this.remake
+       }
+        window.$utill.api.addConnect(data).then(res => {
+        
+        if(res.code==0){
+            this.name = ''
+            this.remake = ''
+            this.email = ''
+            this.$notification.success({
+                message: '温馨提示',
+                description:'Wow,感谢您的留言！',
+                duration:3
+            })
+        }
+      })
+      .catch(res => {
+      })
+    }
   },
 
   watch:{
-      remark(newVal){
-          console.log(newVal)
+      remake(newVal){
           this.allowInput= newVal.length
       }
   },

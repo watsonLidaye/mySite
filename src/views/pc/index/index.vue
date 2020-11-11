@@ -75,7 +75,7 @@
                 <div class="title"><a-icon type="instagram" /> 最近瞎拍</div>
                 <div class="photo_list" >
                     <div  class="photo_item" :style="{width:`${long}px`,height:`${long}px`,margin:`0 ${padding}px 30px`}" v-for="(item,index) in list" :key="index">
-                        <img class="photo_img" :src="`${item.image}`" :preview="index"></img>
+                        <img class="photo_img" :src="`${item.image}`" preview="1"></img>
                     </div>
                 </div>
             </div>
@@ -131,11 +131,11 @@
                <div class="title"><a-icon type="sound" style="margin-right:10px" />和我说几句</div>
                <div class="connect_me">
                    <div class="connect_input">
-                       <a-input placeholder="请输入您的姓名" class="connect_item"  size="large" />
-                       <a-input placeholder="请输入您的邮箱号" class="connect_item"  size="large" />
+                       <a-input placeholder="请输入您的姓名" :maxLength="10"  v-model="name"  class="connect_item"  size="large" />
+                       <a-input placeholder="请输入您的手机号码或者邮箱号码" :maxLength="30" v-model="connect" class="connect_item"  size="large" />
                    </div>
                    <div class="connect_input mt20">
-                      <a-textarea placeholder="请输入您要说的话" :rows="4" allow-clear maxlength='100' :autosize='false' v-model="remark"  @change="onChange"/>
+                      <a-textarea placeholder="请输入您要说的话" :rows="4" allow-clear :maxLength='100' :autoSize='false' v-model="remake"  />
                       <div class="word_input">{{allowInput}}/100</div>
                    </div>
                     <div id="frozen-btn" @click="submit">
@@ -161,6 +161,9 @@ export default {
         long33:0,
         gutterWidth:0,
         col:4,
+        name:'',
+        connect:'',
+        remake:'',
         items:[
         ],
         remark:'',
@@ -213,13 +216,53 @@ export default {
         this.$router.push({path:'/pc/shortContent'})
       },
       submit(){
-          this.$notification.open({
-            message: '温馨提示',
-            description:
-            '功能正在缓慢开发中，请耐心等待',
-            duration: 1,   
-        });
-      },
+        if(!this.name){
+            this.$message.warning('请告诉我你的名字！');
+            return false
+        }
+        if(!this.connect){
+            this.$message.warning('请告诉我你的联系方式！');
+            return false
+        }
+        if(!this.remake){
+            this.$message.warning('听不清，请写内容');
+            return false
+        }
+   
+        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/g.test(this.connect))){ 
+             if(!(/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.connect))){
+                this.$message.warning("请告诉我正确的邮箱号码");  
+                return false
+            }else if((/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.connect))){
+
+            } else {
+                this.$message.warning("请告诉我正确手机号码");  
+                return false 
+            }
+            
+        }
+       
+       let data ={
+           name:this.name,
+           connect:this.connect,
+           remake:this.remake
+       }
+        window.$utill.api.addConnect(data).then(res => {
+        
+        if(res.code==0){
+            this.name = ''
+            this.remake = ''
+            this.connect = ''
+            this.$notification.success({
+                message: '温馨提示',
+                description:'Wow,感谢您的留言！',
+                duration:3
+            })
+        }
+      })
+      .catch(res => {
+      })
+    },
       jump(){
         console.log('点击')
         this.$notification.open({
@@ -232,8 +275,7 @@ export default {
   },
 
   watch:{
-      remark(newVal){
-          console.log(newVal)
+      remake(newVal){          
           this.allowInput= newVal.length
       }
   },

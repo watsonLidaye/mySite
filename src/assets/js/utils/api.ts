@@ -93,7 +93,7 @@ for (let i in api) {
     } else {
       return new Promise((resolve, reject) => {
         GETPromise(api[i].url, data)
-          .then(res => {
+          .then(res => {            
             res.data.code == 0 && resolve(res.data)
             res.data.code != 0 && reject(res.data)
             !res.data && reject(res)

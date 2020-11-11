@@ -98,7 +98,7 @@
 .hide_menu{
     top: -10.98rem;
 }
-.content{
+.content_moblie{
     width: 100%;
     box-sizing: border-box;
     .title{
@@ -286,12 +286,13 @@
     padding: 0 .30rem .200rem;
     .connect_input{
         width: 100%;
+        margin-bottom:.2rem ;
         display: flex;
         position: relative;
         justify-content: space-between;
         align-items: center;
         .connect_item{
-            width: 45%;
+            width: 100%;
         }
         .word_input{
             position: absolute;

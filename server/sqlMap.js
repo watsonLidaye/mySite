@@ -10,6 +10,11 @@ var sqlMap = {
     shortContent:{
         get:'SELECT * FROM shortContent'
     }
+    ,
+    connect:{
+        get:'SELECT * FROM connect',
+        add: 'INSERT INTO connect(id, name, connect,remake) values (?, ?, ?, ?)',
+    }
 }
 
 module.exports = sqlMap;

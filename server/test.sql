@@ -11,11 +11,39 @@
  Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 11/11/2020 09:28:17
+ Date: 11/11/2020 13:31:28
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for connect
+-- ----------------------------
+DROP TABLE IF EXISTS `connect`;
+CREATE TABLE `connect`  (
+  `id` int(32) NOT NULL COMMENT '主键id',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `connect` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `remake` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of connect
+-- ----------------------------
+INSERT INTO `connect` VALUES (0, '测试', '13837192313', '测试');
+INSERT INTO `connect` VALUES (1, '测试', '13837192313', '测试');
+INSERT INTO `connect` VALUES (2, '测试', '13837192313', '测试');
+INSERT INTO `connect` VALUES (3, '测试', '13837192313', '测试');
+INSERT INTO `connect` VALUES (4, '测试', '13837192313', '测试');
+INSERT INTO `connect` VALUES (5, '测试', '13837192313', '测试');
+INSERT INTO `connect` VALUES (6, '测试', '13873813213', '测试');
+INSERT INTO `connect` VALUES (7, '测试2', '13837213313', 'life');
+INSERT INTO `connect` VALUES (8, '测试3', '13738231321', '测试');
+INSERT INTO `connect` VALUES (9, '测', '13423123131', '测');
+INSERT INTO `connect` VALUES (10, 'lipeife', '13837213213', 'c傻了');
+INSERT INTO `connect` VALUES (11, '132132', '61230@qq.com', 'dsa ');
 
 -- ----------------------------
 -- Table structure for content
