@@ -18,7 +18,7 @@ export default {
     };
   },
   mounted(){
-    if(document.body.clientWidth<=1100){
+    if(document.body.clientWidth<=900){
         this.$router.replace('/moblie')
       }else{
         this.$router.replace('/pc')

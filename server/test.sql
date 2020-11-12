@@ -11,7 +11,7 @@
  Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 11/11/2020 13:31:28
+ Date: 12/11/2020 17:32:57
 */
 
 SET NAMES utf8mb4;
@@ -32,13 +32,6 @@ CREATE TABLE `connect`  (
 -- ----------------------------
 -- Records of connect
 -- ----------------------------
-INSERT INTO `connect` VALUES (0, '测试', '13837192313', '测试');
-INSERT INTO `connect` VALUES (1, '测试', '13837192313', '测试');
-INSERT INTO `connect` VALUES (2, '测试', '13837192313', '测试');
-INSERT INTO `connect` VALUES (3, '测试', '13837192313', '测试');
-INSERT INTO `connect` VALUES (4, '测试', '13837192313', '测试');
-INSERT INTO `connect` VALUES (5, '测试', '13837192313', '测试');
-INSERT INTO `connect` VALUES (6, '测试', '13873813213', '测试');
 INSERT INTO `connect` VALUES (7, '测试2', '13837213313', 'life');
 INSERT INTO `connect` VALUES (8, '测试3', '13738231321', '测试');
 INSERT INTO `connect` VALUES (9, '测', '13423123131', '测');
@@ -117,6 +110,39 @@ CREATE TABLE `link_me`  (
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Table structure for short_content_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `short_content_detail`;
+CREATE TABLE `short_content_detail`  (
+  `id` int(32) NOT NULL COMMENT '主键id',
+  `content` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '内容',
+  `cateId` int(32) DEFAULT NULL COMMENT '对应的cateid\r\n',
+  `islike` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '喜欢的数量',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of short_content_detail
+-- ----------------------------
+INSERT INTO `short_content_detail` VALUES (1, '[{type:\'image\',content:\'jianglijuan/20201110202722.jpg\'},{type:\'image\',content:\'jianglijuan/20201110202729.jpg\'},{type:\'image\',content:\'jianglijuan/20201110202742.jpg\'},{type:\'image\',content:\'jianglijuan/20201110202746.jpg\'},{type:\'image\',content:\'jianglijuan/20201110202749.jpg\'},{type:\'image\',content:\'jianglijuan/20201110202753.jpg\'},{type:\'image\',content:\'jianglijuan/20201110202757.jpg\'}]', 1, '0');
+
+-- ----------------------------
+-- Table structure for short_content_type
+-- ----------------------------
+DROP TABLE IF EXISTS `short_content_type`;
+CREATE TABLE `short_content_type`  (
+  `id` int(32) NOT NULL COMMENT '主键id',
+  `shortName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '短文类型名字',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of short_content_type
+-- ----------------------------
+INSERT INTO `short_content_type` VALUES (0, '其他');
+INSERT INTO `short_content_type` VALUES (1, '女孩儿');
+
+-- ----------------------------
 -- Table structure for shortcontent
 -- ----------------------------
 DROP TABLE IF EXISTS `shortcontent`;
@@ -127,27 +153,28 @@ CREATE TABLE `shortcontent`  (
   `isDelete` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '是否删除',
   `createTime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '时间',
   `shortContentId` int(11) NOT NULL COMMENT '内容id  0时仅仅是查看图片，不为跳到短文章页',
+  `isLike` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '' COMMENT '喜欢数量',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of shortcontent
 -- ----------------------------
-INSERT INTO `shortcontent` VALUES (1, '倒影只不过是倒影而已', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_9977.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (2, '靖港古镇旁边的狗子', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_6064.JPG', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (3, '自然的味道', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_5332.JPG', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (4, '橘子洲头的桥', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3261_1.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (5, '橱窗里的自己', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_7984.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (6, '冬日里微笑的狗子', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_1597.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (7, '湘江大桥每天的车流', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3382.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (8, '起风了', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_8780.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (9, '暗', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_7637_1.jpg', '0', '2020-11-9', 1);
-INSERT INTO `shortcontent` VALUES (10, '日常', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_8554.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (11, '整装待发拍照去，删图选图把家还', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3023.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (12, '梅溪湖破旧的单车', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3667.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (13, '冲鸭！', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_4914.JPG', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (14, '你已经间隔1年没弹琴了', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_5411_1.jpg', '0', '2020-11-9', 0);
-INSERT INTO `shortcontent` VALUES (15, '这样的糖油粑粑才正宗', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_6055.JPG', '0', '2020-11-9', 0);
+INSERT INTO `shortcontent` VALUES (1, '倒影只不过是倒影而已', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_9977.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (2, '靖港古镇旁边的狗子', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_6064.JPG', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (3, '自然的味道', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_5332.JPG', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (4, '橘子洲头的桥', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3261_1.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (5, '橱窗里的自己', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_7984.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (6, '冬日里微笑的狗子', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_1597.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (7, '湘江大桥每天的车流', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3382.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (8, '起风了', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_8780.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (9, '暗', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_7637_1.jpg', '0', '2020-11-9', 1, '0');
+INSERT INTO `shortcontent` VALUES (10, '日常', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_8554.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (11, '整装待发拍照去，删图选图把家还', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3023.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (12, '梅溪湖破旧的单车', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_3667.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (13, '冲鸭！', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_4914.JPG', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (14, '你已经间隔1年没弹琴了', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_5411_1.jpg', '0', '2020-11-9', 0, '0');
+INSERT INTO `shortcontent` VALUES (15, '这样的糖油粑粑才正宗', 'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/normal/_MG_6055.JPG', '0', '2020-11-9', 0, '0');
 
 -- ----------------------------
 -- Table structure for user

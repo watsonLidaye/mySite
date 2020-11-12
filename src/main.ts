@@ -10,7 +10,7 @@ import './assets/css/theme.scss'
 import $utill from './assets/js/util'
 import preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
-import { Icon,Button,notification,Input,message  } from 'ant-design-vue';
+import { Icon,Button,notification,Input,message,Spin  } from 'ant-design-vue';
 import  './assets/js/public'
 import 'ant-design-vue/dist/antd.less'
 import Axios from 'axios'
@@ -27,6 +27,7 @@ Vue.use(preview)
 Vue.use(Icon);
 Vue.use(Button);
 Vue.use(Input);
+Vue.use(Spin);
 const bus = new Vue()
 window.bus = bus
 window.Lockr = Lockr

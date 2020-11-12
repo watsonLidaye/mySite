@@ -1,32 +1,69 @@
 <template>
   <div class="pcShortContent">
-    <template v-if="show">
-       <vue-particles
-        color="#999"
-        :particleOpacity="1"
-        :particlesNumber="100"
-        shapeType="circle"
-        :particleSize="3"
-        linesColor="#999"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="1"
-        :linesDistance="150"
-        :moveSpeed="3"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="repulse"
-        class="lizi"
-      >
-       
-      </vue-particles>
-    </template>
-   
+    <a-spin :spinning="loading">
+    <div class="ss-header"></div>
       <div class="bg_plate ">
-        <img src="https://picture-1252636416.cos.ap-chengdu.myqcloud.com/39b8c967fac57d715f50334f07f1e22c.jpg" alt="">
-        <div>页面正在施工....</div>
+        <div class="left_plate">
+          <div class="shortConteent_content" v-for="(item,index) in items" >
+            <div class="ss_conntent_header">
+              <div class="ss_content_detail">
+                {{item.shortContent}}
+              </div>
+             
+            </div>
+             <div class="ss_content_main">
+                <div class="ss_content_img" v-if="showIndex!==index">
+                  <img  v-lazy="`${item.image}`"   alt="">
+                </div>
+                <div class="ss_content_detail_center" v-if="showIndex==index&&shortContentId==0">
+                  <img    v-lazy="`${item.image}`" alt="">
+                </div>
+                <div class="ss_content_detail_center" v-if="showIndex==index&&shortContentId!=0">
+                  <div v-for="(items,index) in detail" >
+                    <img :preview="index+'ss_pc'" v-lazy="`${path}${items.content}`"  alt="" v-if="items.type=='image'">
+                    <div class="ss_content_detail_text" v-if="items.type!=='image'">
+                      {{items.content}}
+                    </div>
+                  </div>
+                </div>
+                 <div class="ss_content_showDetail" v-if="showIndex==index" @click="getShortDetail(item.shortContentId,index)">
+                  <div class="ss_showmore">
+                    收起来
+                      <a-icon type="up" />
+                    </div>
+                </div>
+                <div class="ss_content_showDetail" v-if="showIndex!==index" @click="getShortDetail(item.shortContentId,index)">
+                  <div class="ss_showmore">
+                    查看更多
+                      <a-icon type="down" />
+                    </div>
+                </div>
+             </div>
+             <div class="ss_content_bottom">
+               <div class="like" @click="addLike(index)">
+                <a-icon type="like" />
+                <span style="padding:0 6px">喜欢</span>  
+                <span class="ss_number"> {{item.isLike}}</span>
+                <div class="ss_add_one" :class="active==index?'showAct':''">+1</div>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="right_plate">
+          <div class="right_plate_title"> 
+            短文分类
+          </div>
+            <ul>
+              <li   @click="clickMenu(-1)" :class="actIndex==-1?'act_hover':''">
+                 全部({{totall}})
+              </li>
+              <li v-for="(item,index) in cateList"  @click="clickMenu(item.id,index)" :class="actIndex==index?'act_hover':''">
+                  {{item.shortName}}({{item.count}})
+              </li>
+            </ul>
+        </div>
       </div>
+    </a-spin>
   </div>
 </template>
 <script lang="ts">
@@ -34,7 +71,18 @@
 export default {
   data() {  
     return {  
-      show:false
+      show:false,
+      items:[],
+      active:-1,
+      path:'https://picture-1252636416.cos.ap-chengdu.myqcloud.com/',
+      showAdd:false,
+      showIndex:-1,
+      detail:[],
+      shortContentId:-1,
+      cateList:[],
+      loading:false,
+      totall:0,
+      actIndex:-1
     };
   },
   created(){
@@ -45,10 +93,76 @@ export default {
     window.localStorage.setItem('jum1', '1')
   },
   mounted(){
-    
+     this.getShortContent() 
+     this.getCateList()
   },
   methods: {
-
+    addLike(index){
+      this.active = index
+      
+      setTimeout(()=>{
+        this.active=-1
+      },500)
+    },
+    getShortDetail(id,index){
+      if(index==this.showIndex){
+        this.showIndex = -1
+        this.shortContentId=-1
+        return
+      }
+      this.showIndex=index
+      this.shortContentId = id
+      let data = {id:''}
+      data.id = id
+      if(id==0){
+        return false
+      }
+      window.$utill.api.getShortDetail(data).then(res => {
+        this.detail = res.data
+      })
+      .catch(res => {
+        console.log(res)
+      })
+    },
+    getShortContent(){
+      this.loading= true
+      window.$utill.api.getShortContent().then(res => {
+         this.items = res.data
+         this.loading= false
+      })
+      .catch(res => {
+      })
+    },
+    getCateList(){
+       window.$utill.api.getCateList().then(res => {
+        this.cateList = res.data
+        this.cateList.forEach(item=>{
+          this.totall+= item.count
+        })
+        
+      })
+      .catch(res => {
+      })
+    },
+    clickMenu(id,index){
+      if(id==-1){
+        this.actIndex = -1
+        this.getShortContent()
+      }else{
+        this.actIndex = index
+        let data = {id:''}
+        data.id = id
+        this.items=[]
+        this.loading= true
+        window.$utill.api.getShortContent(data).then(res => {
+          this.items = res.data
+          this.loading= false
+        })
+        .catch(res => {
+        })
+      }
+     
+    }
   }
 };
 </script>

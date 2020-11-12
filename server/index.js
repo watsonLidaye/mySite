@@ -2,6 +2,7 @@ const userApi = require('./api/userApi');
 const recentImage = require('./api/recentImage');
 const shortContent = require('./api/shortContent');
 const connectApi = require('./api/connectApi');
+const connectDetail = require('./api/connectDetail');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -37,6 +38,7 @@ app.use('/api/user', userApi);
 app.use('/api/image', recentImage);
 app.use('/api/shortContent', shortContent);
 app.use('/api/connectApi', connectApi);
+app.use('/api/connectDetail', connectDetail);
 
 // 监听端口
 app.listen(3000);

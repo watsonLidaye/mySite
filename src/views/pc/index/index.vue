@@ -1,5 +1,5 @@
 <template>
-  <div class="pcIndex">
+  <div class="pcIndex" >
       <div class="leftBar">
            <div class="leftBar">
                <div class="clear">
@@ -149,7 +149,6 @@
   </div>
 </template>
 <script lang="ts">
-
 export default {
   data() {  
     return {  
@@ -161,6 +160,7 @@ export default {
         long33:0,
         gutterWidth:0,
         col:4,
+        jum1:'1',
         name:'',
         connect:'',
         remake:'',
@@ -172,10 +172,13 @@ export default {
   },
   
   created(){
-      if(window.localStorage.getItem('jum1')){
-          location.reload();
-          window.localStorage.setItem('jum1','')
-      }
+    //   if(window.localStorage.getItem('jum1')){
+    //     //   location.reload();
+          
+    //     //   window.localStorage.setItem('jum1','')
+    //   }else{
+    //       this.jum1 = ''
+    //   }
 
   },
   mounted(){

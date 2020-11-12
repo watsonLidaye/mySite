@@ -5,10 +5,18 @@ export default {
   },
   getShortContent:{
     url:'api/shortContent/get',
-    methods:'GET'
+    methods:'POST'
   },
   addConnect:{
     url:'api/connectApi/addConnect',
     methods:'POST'
+  },
+  getShortDetail:{
+    url:'api/connectDetail/get',
+    methods:'POST'
+  },
+  getCateList:{
+    url:'api/shortContent/getCateList',
+    methods:'get'
   },
 }

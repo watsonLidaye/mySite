@@ -14,7 +14,7 @@ export default {
   methods: {
   },
   mounted(){
-    if(document.body.clientWidth>1100){
+    if(document.body.clientWidth>900){
         this.$router.replace('/pc')
       }
   }
