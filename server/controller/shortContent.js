@@ -1,6 +1,7 @@
 var $sql = require('../sqlMap');
 var models = require('../db');
 
+//获取列表
 getShort=(req, res) => {
     let table = $sql.shortContent.get
     let params = req.body;
@@ -33,6 +34,7 @@ getShort=(req, res) => {
     }
     models.sqlConnect(table, sqlArr, callBack)
 }
+//获取分类
 getCateList=(req, res) => {
     let table = $sql.shortContent.get
     let cateTable = $sql.shortContentType.get
@@ -67,8 +69,30 @@ getCateList=(req, res) => {
     }
     models.sqlConnect(table, sqlArr, callBack)
 }
+//更新like
+updateLike=(req,res)=>{
+    let { id,number } = req.body;
+    let sql = 'update shortContent set isLike=?where id = ?'
+    let sqlArr = [number,id]
+    let callBack = (err, data) => {
+        if (err) {
+            console.log(err)
+            res.send({
+                code: 400,
+                msg: '更改失败！！'
+            })
+        } else {
+            res.send({
+                code: 0,
+                msg: '更改成功！！',
+            })
+        }
+    }
+    models.sqlConnect(sql, sqlArr, callBack)
+}
 
 module.exports = {
     getShort,
-    getCateList
+    getCateList,
+    updateLike
 }

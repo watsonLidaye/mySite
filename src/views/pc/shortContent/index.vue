@@ -82,7 +82,8 @@ export default {
       cateList:[],
       loading:false,
       totall:0,
-      actIndex:-1
+      actIndex:-1,
+      id:0,
     };
   },
   created(){
@@ -99,7 +100,19 @@ export default {
   methods: {
     addLike(index){
       this.active = index
-      
+      console.log(index)
+      console.log(this.items[index].id)
+      this.items[index].isLike=(Number(this.items[index].isLike)+1).toString()
+      console.log(Number(this.items[index].isLike))
+      let data = {
+        id:this.items[index].id,
+        number:this.items[index].isLike
+      }
+
+      window.$utill.api.updateLike(data).then(res => {
+        })
+        .catch(res => {
+        })
       setTimeout(()=>{
         this.active=-1
       },500)
@@ -145,6 +158,9 @@ export default {
       })
     },
     clickMenu(id,index){
+      console.log(id)
+      console.log(index)
+      this.id = id
       if(id==-1){
         this.actIndex = -1
         this.getShortContent()

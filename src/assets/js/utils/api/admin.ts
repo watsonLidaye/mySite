@@ -19,4 +19,8 @@ export default {
     url:'api/shortContent/getCateList',
     methods:'get'
   },
+  updateLike:{
+    url:'api/shortContent/updateLike',
+    methods:'POST'
+  },
 }
