@@ -39,7 +39,6 @@ app.use('/api/image', recentImage);
 app.use('/api/shortContent', shortContent);
 app.use('/api/connectApi', connectApi);
 app.use('/api/connectDetail', connectDetail);
-
 // 监听端口
 app.listen(3000);
 console.log('success listen at port:3000......');

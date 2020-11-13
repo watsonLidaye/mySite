@@ -1,3 +1,7 @@
+
+const mysql = require('mysql');
+
+
 module.exports ={
     mysql:{
       host: 'localhost',
@@ -5,5 +9,22 @@ module.exports ={
       password: '123456',
       database: 'test',
       port: '3306'
-    }
+    },
+    sqlConnect: function (sql, sqlArr, callback) {
+      var pool = mysql.createPool(this.mysql);
+      pool.getConnection((err, conn) => {
+          console.log("数据库连接池");
+          if (err) {
+              console.log("连接失败");
+              return;
+          } else {
+              console.log("连接成功...");
+          }
+          // 事件驱动回调
+          conn.query(sql, sqlArr, callback);
+          // 释放连接
+          conn.release();
+      })
+  }
+
   }

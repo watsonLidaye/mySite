@@ -13,8 +13,8 @@ var sqlMap = {
         update:"UPDATE Websites  SET isLike='?' WHERE cateId='?'"
     },
     connect:{
-        get:'SELECT * FROM connect',
-        add: 'INSERT INTO connect(id, name, connect,remake) values (?, ?, ?, ?)',
+        get:'SELECT * FROM connect_table',
+        add: 'INSERT INTO connect_table(id, name, connect,remake) values (?, ?, ?, ?)',
     },
     connectDetail:{
         get:'SELECT * FROM short_content_detail ',  

@@ -1,34 +1,9 @@
-var models = require('../db');
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
-var pool = mysql.createPool(models.mysql);
-var $sql = require('../sqlMap');
-// 连接数据库
-// var conn = mysql.createConnection(models.mysql);
+const recentImage = require('../controller/recentImage')
 
-// conn.connect();
 
 // 图片获取接口
-router.get('/getImage', (req, res) => {
-    var table = $sql.image.get
-    pool.getConnection(function (err,connection) {
-        connection.query(table,function(err,result){
-            if (err) {
-                console.log(err);
-            }
-            if (result) {
-                res.send({
-                    code: '0',
-                    data:result,
-                    msg: '获取成功'
-                })
-            }
-            connection.release();
-        })
-    
-      
-    }) 
-});
+router.get('/getImage',recentImage.getImage);
 
 module.exports = router;
