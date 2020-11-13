@@ -67,8 +67,7 @@ addConnect =(req, res) => {
     }
     // 查看最新index
     var callBack=(err,result)=>{
-        console.log(err)
-        console.log(result)
+  
         if (err) {
         }
         if (result) 
@@ -83,15 +82,9 @@ addConnect =(req, res) => {
             }
         }
         let temArr= [index,params.name, params.connect,params.remake]
-        console.log('-----------------')
-        console.log(temArr)
-        console.log(insertOp)
         models.sqlConnect(sql, temArr, insertOp)
     }
     // 计算index值的新值
-    console.log(table)
-    console.log(sqlArr)
-    console.log(callBack)
     models.sqlConnect(table,sqlArr, callBack)
 }
 

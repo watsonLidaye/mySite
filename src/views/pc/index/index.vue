@@ -223,31 +223,31 @@ export default {
         this.$router.push({path:'/pc/shortContent'})
       },
       submit(){
-        // if(!this.name){
-        //     this.$message.warning('请告诉我你的名字！');
-        //     return false
-        // }
-        // if(!this.connect){
-        //     this.$message.warning('请告诉我你的联系方式！');
-        //     return false
-        // }
-        // if(!this.remake){
-        //     this.$message.warning('听不清，请写内容');
-        //     return false
-        // }
+        if(!this.name){
+            this.$message.warning('请告诉我你的名字！');
+            return false
+        }
+        if(!this.connect){
+            this.$message.warning('请告诉我你的联系方式！');
+            return false
+        }
+        if(!this.remake){
+            this.$message.warning('听不清，请写内容');
+            return false
+        }
    
-        // if(!(/^1(3|4|5|6|7|8|9)\d{9}$/g.test(this.connect))){ 
-        //      if(!(/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.connect))){
-        //         this.$message.warning("请告诉我正确的邮箱号码");  
-        //         return false
-        //     }else if((/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.connect))){
+        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/g.test(this.connect))){ 
+             if(!(/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.connect))){
+                this.$message.warning("请告诉我正确的邮箱号码");  
+                return false
+            }else if((/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.connect))){
 
-        //     } else {
-        //         this.$message.warning("请告诉我正确手机号码");  
-        //         return false 
-        //     }
+            } else {
+                this.$message.warning("请告诉我正确手机号码");  
+                return false 
+            }
             
-        // }
+        }
        
        let data ={
            name:this.name,
