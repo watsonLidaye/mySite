@@ -4,6 +4,7 @@ var router = express.Router();
 var mysql = require('mysql');
 var $sql = require('../sqlMap');
 // 连接数据库
+console.log(models)
 var conn = mysql.createConnection(models.mysql);
 
 conn.connect();
@@ -41,6 +42,7 @@ router.post('/addUser', (req, res) => {
                 index = list[i].id+1
             }
         }
+        conn.release();
         conn.query(sql, [index,params.name, params.age], function(err, result) {
             if (err) {
                 console.log(err);
@@ -48,6 +50,7 @@ router.post('/addUser', (req, res) => {
             if (result) {
                 jsonWrite(res, result);
             }
+            conn.release();
         })
         }
     })

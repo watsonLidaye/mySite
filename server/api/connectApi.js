@@ -2,6 +2,7 @@ var models = require('../db');
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var pool = mysql.createPool(models.mysql);
 var $sql = require('../sqlMap');
 // 连接数据库
 var conn = mysql.createConnection(models.mysql);
@@ -64,34 +65,38 @@ router.post('/addConnect', (req, res) => {
    }
     var index = 0
     var list = []
-    conn.query(table,function(err,result){
-        if (err) {
-        }
-        if (result) {
-        console.log(result)
-         list = result
-         if(list.length==0){
-            index=0
-         }else{
-            for(var i=0;i<list.length;i++) {
-                if(list[i].id>=index){
-                    index = list[i].id+1
-                }
-            }
-         }
-         
-        conn.query(sql, [index,params.name, params.connect,params.remake], function(err, result) {
-            console.log('成功')
-            console.log(result)
+    pool.getConnection(function (err,connection) {
+        connection.query(table,function(err,result){
             if (err) {
-                console.log(err);
             }
             if (result) {
-                jsonWrite(res, result);
+            console.log(result)
+             list = result
+             if(list.length==0){
+                index=0
+             }else{
+                for(var i=0;i<list.length;i++) {
+                    if(list[i].id>=index){
+                        index = list[i].id+1
+                    }
+                }
+             }
+             connection.release();
+             connection.query(sql, [index,params.name, params.connect,params.remake], function(err, result) {
+                console.log('成功')
+                console.log(result)
+                if (err) {
+                    console.log(err);
+                }
+                if (result) {
+                    jsonWrite(res, result);
+                }
+                connection.release();
+            })
             }
         })
-        }
     })
+    
    
 });
 

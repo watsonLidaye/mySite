@@ -3,16 +3,18 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var $sql = require('../sqlMap');
+var pool = mysql.createPool(models.mysql);
 // 连接数据库
-var conn = mysql.createConnection(models.mysql);
+// var conn = mysql.createConnection(models.mysql);
 
-conn.connect();
+// conn.connect();
 
 // 图片获取接口
 router.post('/get', (req, res) => {
     var table = $sql.shortContent.get
     var params = req.body;
-        conn.query(table,function(err,result){
+    pool.getConnection(function (err,connection) {
+        connection.query(table,function(err,result){
             if (err) {
                 console.log(err);
             }
@@ -37,7 +39,10 @@ router.post('/get', (req, res) => {
                     })
                 }
             }
+            connection.release();
         })
+    })
+       
     
     
 });
@@ -48,38 +53,43 @@ router.get('/getCateList', (req, res) => {
     var taotalList = []
     var cateList = []
     // 获取所有列表
-    conn.query(table,function(err,result){
-        if (err) {
-            console.log(err);
-        }
-        taotalList = result
-        // 获取分类列表
-        conn.query(cateTable,function(err,result2){
+    pool.getConnection(function (err,connection) {
+        connection.query(table,function(err,result){
             if (err) {
                 console.log(err);
             }
-            
-            cateList = result2        
-            console.log(cateList)    
-            cateList.forEach((item)=>{
-                item.count = 0
-                console.log('--------')
-                console.log(item.id)
-                taotalList.forEach(tatol=>{
-                    console.log('---------------')
-                    console.log(tatol.shortContentId==item.id)
-                    if(tatol.shortContentId==item.id){
-                        item.count=Number(item.count)+1
-                    }
+            taotalList = result
+            connection.release()
+            // 获取分类列表
+            connection.query(cateTable,function(err,result2){
+                if (err) {
+                    console.log(err);
+                }
+                
+                cateList = result2        
+                console.log(cateList)    
+                cateList.forEach((item)=>{
+                    item.count = 0
+                    console.log('--------')
+                    console.log(item.id)
+                    taotalList.forEach(tatol=>{
+                        console.log('---------------')
+                        console.log(tatol.shortContentId==item.id)
+                        if(tatol.shortContentId==item.id){
+                            item.count=Number(item.count)+1
+                        }
+                    })
+                    console.log(item.count)
                 })
-                console.log(item.count)
-            })
-            res.send({
-                code: '0',
-                data:cateList,
-                msg: '获取成功'
+                res.send({
+                    code: '0',
+                    data:cateList,
+                    msg: '获取成功'
+                })
+                connection.release()
             })
         })
     })
+    
 });
 module.exports = router;

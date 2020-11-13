@@ -9,6 +9,7 @@ var sqlMap = {
     },
     shortContent:{
         get:'SELECT * FROM shortContent',
+        getCate:'SELECT * FROM shortContent WHERE shortContentId=?',
         update:"UPDATE Websites  SET isLike='?' WHERE cateId='?'"
     },
     connect:{
