@@ -33,8 +33,6 @@ getShort=(req, res) => {
     }
     models.sqlConnect(table, sqlArr, callBack)
 }
-
-
 getCateList=(req, res) => {
     let table = $sql.shortContent.get
     let cateTable = $sql.shortContentType.get
