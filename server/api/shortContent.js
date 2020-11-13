@@ -8,6 +8,9 @@ var pool = mysql.createPool(models.mysql);
 // var conn = mysql.createConnection(models.mysql);
 
 // conn.connect();
+var connectOp = require('../utill/connectMysql')
+var jsonWrite =  require('../utill/public')
+var response = jsonWrite.jsonWrite
 
 // 图片获取接口
 router.post('/get', (req, res) => {
@@ -58,36 +61,35 @@ router.get('/getCateList', (req, res) => {
             if (err) {
                 console.log(err);
             }
-            taotalList = result
-            connection.release()
-            // 获取分类列表
-            connection.query(cateTable,function(err,result2){
-                if (err) {
-                    console.log(err);
-                }
-                
-                cateList = result2        
-                console.log(cateList)    
-                cateList.forEach((item)=>{
-                    item.count = 0
-                    console.log('--------')
-                    console.log(item.id)
-                    taotalList.forEach(tatol=>{
-                        console.log('---------------')
-                        console.log(tatol.shortContentId==item.id)
-                        if(tatol.shortContentId==item.id){
-                            item.count=Number(item.count)+1
-                        }
-                    })
-                    console.log(item.count)
+            taotalList = result 
+        })
+        // 获取分类列表
+        connection.query(cateTable,function(err,result2){
+            if (err) {
+                console.log(err);
+            }
+            
+            cateList = result2        
+            console.log(cateList)    
+            cateList.forEach((item)=>{
+                item.count = 0
+                console.log('--------')
+                console.log(item.id)
+                taotalList.forEach(tatol=>{
+                    console.log('---------------')
+                    console.log(tatol.shortContentId==item.id)
+                    if(tatol.shortContentId==item.id){
+                        item.count=Number(item.count)+1
+                    }
                 })
-                res.send({
-                    code: '0',
-                    data:cateList,
-                    msg: '获取成功'
-                })
-                connection.release()
+                console.log(item.count)
             })
+            res.send({
+                code: '0',
+                data:cateList,
+                msg: '获取成功'
+            })
+            connection.release()
         })
     })
     

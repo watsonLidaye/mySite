@@ -5,9 +5,9 @@ var mysql = require('mysql');
 var pool = mysql.createPool(models.mysql);
 var $sql = require('../sqlMap');
 // 连接数据库
-var conn = mysql.createConnection(models.mysql);
+var pool = mysql.createConnection(models.mysql);
 
-conn.connect();
+// conn.connect();
 // 操作成功
 var jsonWrite = function(res, ret) {
     console.log(ret)
@@ -81,7 +81,6 @@ router.post('/addConnect', (req, res) => {
                     }
                 }
              }
-             connection.release();
              connection.query(sql, [index,params.name, params.connect,params.remake], function(err, result) {
                 console.log('成功')
                 console.log(result)
