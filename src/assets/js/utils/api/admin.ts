@@ -23,4 +23,8 @@ export default {
     url:'api/shortContent/updateLike',
     methods:'POST'
   },
+  getRecentWords:{
+    url:'api/words/getRecent',
+    methods:'GET'
+  },
 }

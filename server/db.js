@@ -24,6 +24,7 @@ module.exports ={
           conn.query(sql, sqlArr, callback);
           // 释放连接
           conn.release();
+          console.log('已经释放')
       })
   }
 

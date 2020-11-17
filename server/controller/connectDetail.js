@@ -7,6 +7,7 @@ getDetail =(req, res) => {
     let params = req.body;
     let last =''
     let callBack =(err,result)=>{
+        console.log(params)
         if (err) {
             console.log(err);
         }

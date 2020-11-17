@@ -14,16 +14,18 @@ getShort=(req, res) => {
             if(params.id){
                 let list = []
                 result.forEach(item=>{
-                    if(item.cateId == params.id) {
+                    if(item.shortContentId == params.id) {
                         list.push(item)
                     }
                 })
+                list =list.reverse()
                 res.send({
                     code: '0',
                     data:list,
                     msg: '获取成功'
                 })
             } else{
+                result =result.reverse()
                 res.send({
                     code: '0',
                     data:result,

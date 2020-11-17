@@ -84,7 +84,7 @@
                 <div>
                     <waterfall :col='col' :width="long33" :gutterWidth="gutterWidth"  :data="items"  >
                         <template >
-                            <div class="cell-item" v-for="(item,index) in items" >
+                            <div class="cell-item" v-for="(item,index) in items" :key="index+'short'" >
                             <div class="item-body">
                                 <template v-if="item.shortContentId!=0">
                                    <div class="item-desc" @click="jumpShort(item.shortContentId,item.image)">
@@ -114,17 +114,9 @@
           </div>
            <div class="photo">
                <div class="title"> <a-icon type="snippets" style="margin-right:10px" />最新文章</div> 
-               <div class='content_item'>
-                   <h2>这是一个文章的标题1</h2>
-                   <div>z这是文章的打开两打两控的康复灵栓看了那个肯定国内分两个那地方了刚拿到房了刚拿到房了拿过来的哪里哪里你发了哪里卡你发了弄好了发老客户烦恼弗兰克拿回来你领卡后那个离开你领卡哪里你的吉安市了煎得可氨基酸肯德基卡带来的</div>
-               </div>
-               <div class='content_item'>
-                   <h2>这是一个文章的标题2</h2>
-                   <div>z这是文章的打开两打两控的康复灵栓看了那个肯定国内分两个那地方了刚拿到房了刚拿到房了拿过来的哪里哪里你发了哪里卡你发了弄好了发老客户烦恼弗兰克拿回来你领卡后那个离开你领卡哪里你的吉安市了煎得可氨基酸肯德基卡带来的</div>
-               </div>
-               <div class='content_item'>
-                   <h2>这是一个文章的标题3</h2>
-                   <div>z这是文章的打开两打两控的康复灵栓看了那个肯定国内分两个那地方了刚拿到房了刚拿到房了拿过来的哪里哪里你发了哪里卡你发了弄好了发老客户烦恼弗兰克拿回来你领卡后那个离开你领卡哪里你的吉安市了煎得可氨基酸肯德基卡带来的</div>
+               <div class='content_item' v-for="(item,index) in words" :key="index+'words'">
+                   <h2>{{item.title}}</h2>
+                   <div>{{item.content}}</div>
                </div>
           </div>
           <div class="record">
@@ -167,7 +159,8 @@ export default {
         items:[
         ],
         remark:'',
-        allowInput:0
+        allowInput:0,
+        words:[]
     };
   },
   
@@ -204,6 +197,7 @@ export default {
       })
       .catch(res => {
       })
+      this.getRecentWords()
   },
   methods: {
       showImg(img){
@@ -219,8 +213,15 @@ export default {
               this.$router.push({path:'/pc/shortContent',param:{id:id}})
           }
       },
+      getRecentWords(){
+           window.$utill.api.getRecentWords().then(res => {
+         this.words = res.data
+      })
+      .catch(res => {
+      })
+      },
       jumpTo(url){
-        this.$router.push({path:'/pc/shortContent'})
+        this.$router.push({path:url})
       },
       submit(){
         if(!this.name){

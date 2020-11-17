@@ -3,6 +3,7 @@ const recentImage = require('./api/recentImage');
 const shortContent = require('./api/shortContent');
 const connectApi = require('./api/connectApi');
 const connectDetail = require('./api/connectDetail');
+const words = require('./api/wordsApi');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -39,6 +40,7 @@ app.use('/api/image', recentImage);
 app.use('/api/shortContent', shortContent);
 app.use('/api/connectApi', connectApi);
 app.use('/api/connectDetail', connectDetail);
+app.use('/api/words', words);
 // 监听端口
 app.listen(3000);
 console.log('success listen at port:3000......');
