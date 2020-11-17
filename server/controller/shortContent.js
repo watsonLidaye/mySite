@@ -14,7 +14,7 @@ getShort=(req, res) => {
             if(params.id){
                 let list = []
                 result.forEach(item=>{
-                    if(item.shortContentId == params.id) {
+                    if(item.cateId == params.id) {
                         list.push(item)
                     }
                 })

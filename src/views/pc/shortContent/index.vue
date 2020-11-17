@@ -26,13 +26,13 @@
                     </div>
                   </div>
                 </div>
-                 <div class="ss_content_showDetail" v-if="showIndex==index" @click="getShortDetail(item.shortContentId,index)">
+                 <div class="ss_content_showDetail" v-if="showIndex==index" @click="getShortDetail(item.cateId,index)">
                   <div class="ss_showmore">
                     收起来
                       <a-icon type="up" />
                     </div>
                 </div>
-                <div class="ss_content_showDetail" v-if="showIndex!==index" @click="getShortDetail(item.shortContentId,index)">
+                <div class="ss_content_showDetail" v-if="showIndex!==index" @click="getShortDetail(item.cateId,index)">
                   <div class="ss_showmore">
                     查看更多
                       <a-icon type="down" />
