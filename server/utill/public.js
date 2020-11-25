@@ -15,27 +15,6 @@ var jsonWrite = function(code,res,err,ret) {
             }
     }
     res.json(response);
-    // if(typeof ret === 'undefined') {
-    //     res.json({
-    //         code: '1',
-    //         msg: '操作失败'
-    //     });
-    // } else {
-    //     if(Object.prototype.toString.call(ret)=='[object String]'){
-    //         res.json({
-    //             code: '1',
-    //             msg: ret
-            
-    //         });
-           
-    //     }else{
-    //         res.json({
-    //             code: '0',
-    //             msg: '操作成功'
-    //         });
-    //     }
-        
-    // }
 }
 
 exports.jsonWrite=jsonWrite

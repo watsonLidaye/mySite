@@ -21,10 +21,13 @@ module.exports ={
               console.log("连接成功...");
           }
           // 事件驱动回调
-          conn.query(sql, sqlArr, callback);
+          conn.query(sql, sqlArr,(err,result)=>{
+            callback(err,result)
+            conn.release();
+            console.log('已经释放')
+          });
           // 释放连接
-          conn.release();
-          console.log('已经释放')
+         
       })
   }
 
