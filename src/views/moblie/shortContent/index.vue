@@ -93,6 +93,7 @@ export default {
   },
   created(){
     this.show = true
+    console.log('尝试提交')
   },
   destroyed(){
     this.show = false
