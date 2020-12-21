@@ -82,7 +82,7 @@
     
   </div>
 </template>
-<script lang="ts">
+<script>
 import moblieHeader from '../../../components/moblieIndex'
 
 export default {
