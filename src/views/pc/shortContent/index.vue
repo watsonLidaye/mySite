@@ -1,10 +1,12 @@
 <template>
   <div class="pcShortContent">
     <a-spin :spinning="loading">
-    <div class="ss-header"></div>
+    <div class="ss-header">
+
+    </div>
       <div class="bg_plate ">
         <div class="left_plate">
-          <div class="shortConteent_content" v-for="(item,index) in items" >
+          <div class="shortConteent_content" :ref="'list'+item.shortContentId" v-for="(item,index) in items" >
             <div class="ss_conntent_header">
               <div class="ss_content_detail">
                 {{item.shortContent}}
@@ -64,6 +66,9 @@
         </div>
       </div>
     </a-spin>
+    <div class="backTop" v-show="gotop" @click="toTop">
+      <a-icon type="vertical-align-top" />
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -83,6 +88,7 @@ export default {
       totall:0,
       actIndex:-1,
       id:0,
+      gotop:false
     };
   },
   created(){
@@ -91,12 +97,43 @@ export default {
   destroyed(){
     this.show = false
     window.localStorage.setItem('jum1', '1')
+    window.removeEventListener('scroll', this.handleScroll)
   },
   mounted(){
-     this.getShortContent() 
+    console.log(this.$route.query.id)
+    if(this.$route.query.id){
+      // this.getShortDetail()
+      this.getShortContent(this.$route.query.id) 
+    }else{
+      this.getShortContent() 
+    }
      this.getCateList()
+      window.addEventListener("scroll", this.handleScroll, true);
+      
   },
   methods: {
+    handleScroll(e){
+      const that = this
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      that.scrollTop = scrollTop
+      if (that.scrollTop > 60) {
+        that.gotop = true
+      } else {
+        that.gotop = false
+      }
+
+    },
+     toTop() {
+      
+      let top = document.documentElement.scrollTop || document.body.scrollTop;
+      // 实现滚动效果 
+      const timeTop = setInterval(() => {
+        document.body.scrollTop = document.documentElement.scrollTop = top -= 100;
+        if (top <= 0) {
+          clearInterval(timeTop);
+        }
+      }, 10);
+    },
     addLike(index){
       this.active = index
       console.log(index)
@@ -132,16 +169,28 @@ export default {
       console.log(data)
       window.$utill.api.getShortDetail(data).then(res => {
         this.detail = res.data
+        console.log( this.$refs[`list${id}`][0].offsetTop)
+        window.scrollTo(0,this.$refs[`list${id}`][0].offsetTop);
       })
       .catch(res => {
         console.log(res)
       })
     },
-    getShortContent(){
+    getShortContent(id){
       this.loading= true
       window.$utill.api.getShortContent().then(res => {
          this.items = res.data
          this.loading= false
+         
+         if(id){
+           let indexs =0
+           this.items.forEach((item,index)=>{
+             if(item.shortContentId == id){
+               indexs = index
+             }
+           })
+           this.getShortDetail(id,indexs)
+         }
       })
       .catch(res => {
       })

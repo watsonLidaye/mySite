@@ -1,53 +1,6 @@
 <template>
   <div class="moblieIndex">
-      <div class="leftBars" :class="menuClick?'show_menu':'hide_menu'">
-           <div class="leftBar_inner">
-              <div  class="header_left">
-                  <img src="http://www.ergouzi.com.cn/images/normal/48bda875f9fc5d94908b941ff3507ae.jpg" alt="" srcset="" class='left_img'>
-                  <div>
-                      <div style="margin-bottom:.20rem">李二狗子</div>
-                      <div style="font-size:14px">摄影爱好者</div>
-                  </div>
-              </div>
-              <ul class="left_menu">
-                  <li @click="jumpTo('/moblie/shortContent')">
-                      瞎BB
-                      <div class="line_area">
-                      </div>
-                      <div class="line_area2">
-                      </div>
-                  </li>
-                  <li @click="jumpTo('/moblie/content')">
-                      文章
-                      <div class="line_area">
-                      </div>
-                      <div class="line_area2">
-                      </div>
-                  </li>
-                  <li @click="jumpTo('/moblie/images')">
-                      图集
-                      <div class="line_area">
-                      </div>
-                      <div class="line_area2">
-                      </div>
-                  </li>
-                  <li @click="jumpTo('/moblie/lab')">
-                      实验室
-                      <div class="line_area">
-                      </div>
-                      <div class="line_area2">
-                      </div>
-                  </li>
-              </ul>
-          </div>
-      </div>
-      <div class="totalModal" @click="showMenu" v-if="menuClick"></div>
-      <div class="headers">
-        <div class="header_title">Watson.Li</div>
-        <div @click="showMenu" >
-          <a-icon type="menu" class="tran3" :class="menuClick?'tagggle':''" />
-        </div>
-      </div>
+      <moblieHeader></moblieHeader>
       <div class="content_moblie">
             <div class="first_sceen">
                 <div class="title1">一些胡话</div>
@@ -60,7 +13,7 @@
                 </div>
             </div>
            <div class="photo" id='photo'>
-               <div class="more">
+               <div class="more" @click="jumpTo('/moblie/shortContent')">
                    <a-button type="link" >
                     查看更多<a-icon type="double-right" />
                     </a-button>
@@ -105,21 +58,6 @@
                     </waterfall>
                 </div>
           </div>
-           <div class="photo">
-               <div class="title"> <a-icon type="snippets" style="margin-right:10px" />最新文章</div> 
-               <div class='content_item'>
-                   <h2>这是一个文章的标题1</h2>
-                   <div>z这是文章的打开两打两控的康复灵栓看了那个肯定国内分两个那地方了刚拿到房了刚拿到房了拿过来的哪里哪里你发了哪里卡你发了弄好了发老客户烦恼弗兰克拿回来你领卡后那个离开你领卡哪里你的吉安市了煎得可氨基酸肯德基卡带来的</div>
-               </div>
-               <div class='content_item'>
-                   <h2>这是一个文章的标题2</h2>
-                   <div>z这是文章的打开两打两控的康复灵栓看了那个肯定国内分两个那地方了刚拿到房了刚拿到房了拿过来的哪里哪里你发了哪里卡你发了弄好了发老客户烦恼弗兰克拿回来你领卡后那个离开你领卡哪里你的吉安市了煎得可氨基酸肯德基卡带来的</div>
-               </div>
-               <div class='content_item'>
-                   <h2>这是一个文章的标题3</h2>
-                   <div>z这是文章的打开两打两控的康复灵栓看了那个肯定国内分两个那地方了刚拿到房了刚拿到房了拿过来的哪里哪里你发了哪里卡你发了弄好了发老客户烦恼弗兰克拿回来你领卡后那个离开你领卡哪里你的吉安市了煎得可氨基酸肯德基卡带来的</div>
-               </div>
-          </div>
           <div class="record">
                <div class="title"><a-icon type="sound" style="margin-right:10px" />和我说几句</div>
                <div class="connect_me">
@@ -145,6 +83,7 @@
   </div>
 </template>
 <script lang="ts">
+import moblieHeader from '../../../components/moblieIndex'
 
 export default {
   data() {  
@@ -163,10 +102,11 @@ export default {
         ],
         remake:'',
         allowInput:0,
-        menuClick:false
     };
   },
-  
+  components:{
+      moblieHeader:moblieHeader
+  },
   created(){
 
   },
@@ -195,9 +135,6 @@ export default {
       })
   },
   methods: {
-    showMenu(){
-      this.menuClick =!this.menuClick
-    },
     showImg(img){
         this.seePicture=this.seePicture?'':img
     },
@@ -208,14 +145,15 @@ export default {
         console.log(e.detail.value)
     },
     jumpShort(id,img){
-        if(id==0){
-            this.seePicture=this.seePicture?'':img
-        }else{
-            this.$router.push({path:'/pc/shortContent',param:{id:id}})
-        }
-    },
+          console.log(id)
+          if(id==0){
+              this.seePicture=this.seePicture?'':img
+          }else{
+              this.$router.push({path:'/moblie/shortContent',query:{id:id}})
+          }
+      },
     jumpTo(url){
-    this.$router.push({path:url})
+        this.$router.push({path:url})
     },
     jump(){
         console.log('点击')

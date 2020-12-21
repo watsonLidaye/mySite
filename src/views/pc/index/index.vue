@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </li>
-                <li @click="jumpTo('/pc/content')">
+                <!-- <li @click="jumpTo('/pc/content')">
                     文章
                     <div class="line_area">
                         <div class="line_bar">
@@ -31,7 +31,7 @@
                             <div class="line_scoss"></div>
                         </div>
                     </div>
-                </li>
+                </li> -->
                 <li @click="jumpTo('/pc/images')">
                     图集
                     <div class="line_area">
@@ -112,14 +112,14 @@
                     </waterfall>
                 </div>
           </div>
-           <div class="photo">
+           <!-- <div class="photo">
                <div class="title"> <a-icon type="snippets" style="margin-right:10px" />最新文章</div> 
                <div class='content_item' v-for="(item,index) in words" :key="index+'words'">
                    <h2>{{item.title}}</h2>
                    <div>{{item.content}}</div>
                </div>
-          </div>
-          <div class="record">
+          </div> -->
+          <div class="photo">
                <div class="title"><a-icon type="sound" style="margin-right:10px" />和我说几句</div>
                <div class="connect_me">
                    <div class="connect_input">
@@ -207,10 +207,11 @@ export default {
           console.log(e)
       },
       jumpShort(id,img){
+          console.log(id)
           if(id==0){
               this.seePicture=this.seePicture?'':img
           }else{
-              this.$router.push({path:'/pc/shortContent',param:{id:id}})
+              this.$router.push({path:'/pc/shortContent',query:{id:id}})
           }
       },
       getRecentWords(){

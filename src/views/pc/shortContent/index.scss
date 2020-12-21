@@ -1,6 +1,4 @@
-.show{
 
-}
 .pcShortContent{
   width: 100%;
   height: 100vh;;
@@ -49,7 +47,7 @@
     .ss_content_img{
       padding: 20px 0;
       width: 100%;
-      height: 200px;
+      height: 100px;
       img{
         width: 70%;
       }
@@ -59,15 +57,15 @@
       margin-bottom: 40px;
       width: 100%;
       img{
-        margin:10px 0;
-        width: 70%;
+        margin:20px 0;
+        width: 90%;
       }
       .ss_content_detail_text{
         margin:10px 0;
-        width: 70%;
+        width: 90%;
         text-indent:50px;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 18px;
+        line-height: 22px;
         text-align: left;
         margin: 0 auto;
       }
@@ -181,10 +179,30 @@
 }
 .ss-header{
   width: 100%;
-  height: 40px;
+  min-width: 1200px;
   background: #fff;
+  height: 40px;
+  overflow: hidden;
   margin-bottom: 10px;
   border-bottom: 1px solid #eee;
   box-shadow: 0 1px 3px rgba(18,18,18,.1);
+  img{
+    width: 100%;
+  }
 }
-
+.backTop{
+  position: fixed;
+  bottom: 30px;
+  right: 20%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+.backTop:hover{
+  cursor: pointer;
+}
